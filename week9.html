@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Demircan Tas - How to Make Almost Anything</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Demircan Tas</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="final.html">Final - Rover</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week1.html">Week 1 - Cutting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week2.html">Week 2 - PCB's</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week3.html">Week 3 - 3D Scan & Print</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4.html">Week 4 - Circuit Board Design</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week5.html">Week 5 - CNC Machining</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week6.html">Week 6 - Embedded Programming</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week7.html">Week 7 - Molding and Casting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week8.html">Week 8 - Inputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week9.html">Week 9 - Outputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week10.html">Week 10 - Networking</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week11.html">Week 11 - Interfaces</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Action</a>
+                                    <a class="dropdown-item" href="#!">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+                <h1 class="mt-4">Week 9 - Outputs</h1>
+                <h2>Motors</h2>
+
+                <button class="collapsible">Testing motors of different sizes</button>
+                <div class="content">
+                    <p>This week, I decided to start simple with DC motors that operate at the same voltage as my microcontroller in order to create a small baseline prototype for my final project</p>
+                    <p>I plugged DC motors to the power source and checked their behaviour in terms of speed, torque, noise and vibrations.</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week9/dc_trimmed.mp4" type="video/mp4">
+                    </video>
+                    <p>Since creating the prototype for molding & casting week, I want to create a small working prototype before going for anything bigger. The DC and stepper motors in the shop were too big for this purpose.</p>
+                    <p>What I found to be a possible solution are very small vibro motors that can operate on as little as 1.5 volts, and are tiny.</p>
+                    <p>My base plan is to switch the unbalanced weights (that make the motor vibrate) with wheels. However, upon testing the motors, I fell in love with their angry bee behaviour. I could utilize vibration both as a simple means of locomotion, and expression (my final project should express fear).</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week9/angry_bee.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <button class="collapsible">Creating a chassis from an old board</button>
+                <div class="content">
+                    <p>Another idea for this week is to experiment with using a PCB as the chassis for a small rover. This approach may be especially efficient for building quick prototypes of fabricating multiple rovers.</p>
+                    <p>I glued two vibromotors to an old PCB test and soldered their GND and VCC cables to traces on the board for easier connection.</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week9/PCB_chassis.mp4" type="video/mp4">
+                    </video>
+                    <p>I jumper wired an analog pin from my first iteration phototransistor board to the motors and modified the code to output to motors instead of an LED.</p>
+                    <p>Thanks to a very humble setup, I achieved the first working prototype for my final project. The vibromotors operate under low light.</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week9/prototype.mp4" type="video/mp4">
+                    </video>
+                    <p>I also tested they prototype with 3.7 volt LiPo batteries, with satisfactory results.</p>
+                </div>
+                
+                <button class="collapsible">Early work for stepper motors</button>
+                <div class="content">
+                    <p>After completing the initial protoype, I wanted to get my hands dirty with heavier, more accurate stepper motors, and motor controllers.</p>
+                    <p>Designs for stepper motor PCB turned out to be more complex than I like (Kudos to Kim for teamwork). As a solution, we decided to design separate boards for microcontroller, sensors, and motor controllers that would communicate with 2x5 connectors.</p>
+                    <p>My initial design with 2x5 connectors ended up in even a greater mess of connections. However, by using a smarter layout among pins and connectors, I think it will be easier to implement this approach.</p>
+                    <img src="assets/week9/modular_schematics.png" alt="modular schematics", width="720">
+                    <img src="assets/week9/modular_PCB.png" alt="modular PCB", width="720">
+                    <p>Working through another couple of hours with Kim, I updated the design to accomodate the spatial layout of connectors with regards to the microcontroller. Resulting in a working PCB design that only requires a single 0 ohm resistor for routing.</p>
+                    <img src="assets/week9/modular_schematics1.png" alt="updated schematics design", width="720">
+                    <img src="assets/week9/modular_PCB1.png" alt="updated PCB design", width="720">
+                </div>
+
+                <button class="collapsible">Files</button>
+                <div class="content">
+                    <a href="assets/week9/files/SM_modular.7z" download>KiCad project</a><br>
+                    <a href="assets/week9/files/StepperMotor1_update.7z" download>Updated KiCad project</a><br>
+                </div>
+
+                <!--
+                        ><p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                        </p>
+                    -->
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

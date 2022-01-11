@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Demircan Tas - How to Make Almost Anything</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Demircan Tas</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="final.html">Final - Rover</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week1.html">Week 1 - Cutting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week2.html">Week 2 - PCB's</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week3.html">Week 3 - 3D Scan & Print</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4.html">Week 4 - Circuit Board Design</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week5.html">Week 5 - CNC Machining</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week6.html">Week 6 - Embedded Programming</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week7.html">Week 7 - Molding and Casting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week8.html">Week 8 - Inputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week9.html">Week 9 - Outputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week10.html">Week 10 - Networking</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week11.html">Week 11 - Interfaces</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Action</a>
+                                    <a class="dropdown-item" href="#!">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+                <h1 class="mt-4">Week 10 - Networking</h1>
+                <h2>Communication</h2>
+
+                <button class="collapsible">A Protocol for Modular Boards</button>
+                <div class="content">
+                    <p>Building on <a href="week9.html">last week</a> I developed schematics and PCB designs for boards with 10 pin connectors. The core idea here is a rule that pins 1 and 3 are used for GND and VCC (respectively), and pins 8, 10 are left blank to prevent damage to boards in case of orientation mismatches. Remaining pins are connected to vacant pins of the microcontroller for flexibility.</p>
+                    <p>We share the same 2x5 connector protocol with Kim, so that we can share modules when necessary, and debug using each other's boards.</p>
+                    <p>This setup relies on a central board with a microcontroller, and two other boards for sensing and actuation. Another part of our protocol is that sensing boards connect from the left hand side, while actuation boards connect to the right hand side of the microcontroller board.</p>
+                    <img src="assets/week10/modular_schematics.png" alt="schematics", width="720">
+                    <img src="assets/week10/modular_PCB.png" alt="PCB", width="720">
+                    <img src="assets/week10/modular_3d.png" alt="3d", width="720">
+                </div>
+
+                <button class="collapsible">WI-FI and Bluetooth Communication</button>
+                <div class="content">
+                    <p>To understand practical wireless communication, I produced an ESP32-CAM board from Neil's design. Using example code, I was able to communicate video from ESP32-CAM to my PC via WI-FI, and communicate both ways between ESP32-CAM and my Android device via Bluetooth.</p>                    
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week10/esp32wifi.mp4" type="video/mp4">
+                    </video>
+                    <p>The 8 pin connections for this board, and my later derivation of it were easily damaged when placing / removing the ESP32-CAM. Future designs may benefit from a more robust connection method.</p>
+                    <img src="assets/week10/IMG_20211122_150513_3_3.jpg" alt="damaged traces", width="720">
+                </div>
+
+                <button class="collapsible">Wired Communication via UART</button>
+                <div class="content">
+                    <p>I modified Neil's design for ESP32-CAM breakout to include our 2x5 pin connector, so that I could communicate between ESP32-CAM and the ATTiny1614 in my main board. However, ESP32-CAM does not have a SoftwareSerial.h library in the Arduino IDE. There are alternative implementations on the web with workflows that differ from SoftwareSerial.h.</p>
+                    <img src="assets/week10/modular_esp32_3d.png" alt="ESP32-CAM modular board">
+                    <p>To conserve time and sanity, I connected TX and RX from the existing 6 pin serial connector, as well as VCC and GND to communicate between ESP32-CAM Bluetooth and ATTiny1614.</p>
+                    <img src="assets/week10/IMG_20211122_151318.jpg" alt="ESP32-CAM to ATTiny1614", width="720">
+                    <p>The current state is a semi-success. I can send messages from my phone to my ATTiny1614, through the ESP32-CAM and vice versa. However, ESP32-CAM receives constant nonsense signals from the ATTiny1614.</p>
+                </div>
+
+                <button class="collapsible">Group Assignment</button>
+                <div class="content">
+                    <p>Using the same boards we made for our modular connection protocol, we were able to connect our microcontrollers with 2x5 connectors with Kim.</p>
+                    <p>In this case Kim's board (right) receives sensor data from his sensor board (bottom left) which it then sends to my board (left). However the sensor data only works as an on-off swith on my board.</p>
+                    <img src="assets/week10/IMG_20211122_151548.jpg" alt="serial connection", width="720">
+                    <p>Using the <a href="https://www.arduino.cc/en/Reference/softwareSerial">softwareSerial.h</a> library, we were able to use pins 9, 10 as TX and RX for a UART connection.</p>
+                    <p>In the resulting example our microcontrollers send and receive messages from our computers through the 6 pin serial connection, while they communicate with each other via RX and TX channels we defined within the 2x5 pin connection.</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week10/comm_demir.mp4" type="video/mp4">
+                    </video>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week10/comm_kim.mp4" type="video/mp4">
+                    </video>
+                    <ul>
+                        <p>Notes</p>
+                        <li>In our example, we had to switch TX and RX on one of the boards.</li>
+                        <li>When we try sending analog signals among boards via pins, the signal reads either 1023 or 0 despite the source board sending values in between.</li>
+                        <li>"Serial.println()" function only works with SoftwareSerial when "mySerial.readstring()" methods is used as an argument.</li>
+                        <li>2x5 vertical connectors provide flexibility as breakouts for jumper cables for tests and debugging purposes, even outside our protocol.</li>
+                    </ul>
+                    <p>I plan to develop code, so we can send ESP32-CAM's signals (acquired from phone via Bluetooth) to different microcontrollers based on an address scheme.</p>
+                    <img src="assets/week10/IMG_20211122_151717.jpg" alt="proof of concept", width="720">
+                </div>
+
+                <button class="collapsible">Files</button>
+                <div class="content">
+                    <a href="assets/week10/files/SM_modular2_esp32.7z" download>KiCad project</a><br>
+                    <a href="assets/week10/files/Serial_with_kim.ino" download>.ino code for group assignment</a><br>
+                </div>
+
+                <!--
+                        ><p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                        </p>
+                    -->
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

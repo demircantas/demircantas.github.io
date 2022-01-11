@@ -1,0 +1,661 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Week 5</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head>
+
+<body>        <div class="border-end bg-white" id="sidebar-wrapper">
+	<div class="sidebar-heading border-bottom bg-light">Demircan Tas</div>
+	<div class="list-group list-group-flush">
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="final.html">Final -
+			Rover</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="week1.html">Week 1 -
+			Cutting</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="week2.html">Week 2 -
+			PCB's</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="week3.html">Week 3 -
+			3D Scan & Print</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4.html">Week 4 - Circuit Board Design</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4_notion.html">Week 5 - WIP</a>
+	</div>
+</div><article id="e9fff575-626d-4163-9bd9-1bca39d905fe" class="page sans">
+	<header><h1 class="page-title">Week 5</h1></header><div class="page-body">
+		<ul class="toggle"><li><details open=""><summary>Toggle list test</summary><ul class="bulleted-list"><li style="list-style-type: disc;">Bullet test</li></ul><ul class="bulleted-list"><li style="list-style-type: disc;">Bullet test</li></ul><ul class="bulleted-list"><li style="list-style-type: disc;">Bullet test</li></ul><ul class="toggle"><li><details open=""><summary>Toggle list test</summary><ul class="bulleted-list"><li style="list-style-type: disc;">Bullet test</li></ul><ul class="bulleted-list"><li style="list-style-type: disc;">Bullet test</li></ul><ul class="bulleted-list"><li style="list-style-type: disc;">Bullet test</li></ul></details></li></ul></details></li></ul>
+
+
+
+
+
+
+		
+		<ul id="529bfb51-0356-4d3c-9f42-103dcf66343d" class="toggle"><li><details open=""><summary>Randoms </summary><ul id="3bb72364-72c9-4c96-9cb5-d685d0ad7545" class="bulleted-list"><li style="list-style-type:disc">Size mistakes 100s of mb’s</li></ul><ul id="abd672b3-5977-4875-ae53-0489d9da1c94" class="bulleted-list"><li style="list-style-type:disc">It is possible to pause and add sand (for example, Kelsey) into your print.</li></ul><ul id="a2bf63a4-d6d1-4398-a76c-bdb005c7b49f" class="bulleted-list"><li style="list-style-type:disc">Check <a href="http://fabacadamy.org">fabacadamy.org</a> for class recordings</li></ul><ul id="5a26e32e-f4aa-4644-b9bf-e872ad140eed" class="bulleted-list"><li style="list-style-type:disc">Numbered lists are welcome </li></ul><ul id="0a582c49-96af-4b5e-89c6-a52aaf144e52" class="bulleted-list"><li style="list-style-type:disc">ESP32 cam is good for vision</li></ul><ul id="a233c4a0-0a8a-48fa-9fcd-5d3294097c4d" class="bulleted-list"><li style="list-style-type:disc">You can get away with much less support than the slicer suggests.</li></ul><ul id="0706b5c9-b94f-4b03-9441-449f60973c5e" class="bulleted-list"><li style="list-style-type:disc">Paul Debevec can scan glass and specular surfaces by solving brdf with spherical harmonics.<figure id="63a19d9e-166e-4b65-bd34-3d59728ee82d"><a href="http://pauldebevec.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Paul Debevec Home Page</div><div class="bookmark-description">Paul Debevec, VES Director of Research, Creative Algorithms and TechnologyNetflix Adjunct Research Professor, USC Computer Science &amp; USC ICT / www.debevec.org Bio | Films | Talks | Publications | Resources | News Clippings Welcome! This site presents most of the work I have been involved with in computer graphics, including research papers, computer animations, art projects, software, and educational resources.</div></div><div class="bookmark-href"><img src="http://pauldebevec.com/favicon.ico" class="icon bookmark-icon"/>http://pauldebevec.com/</div></div><img src="http://pauldebevec.com/Images/Debevec-ForeFront.png" class="bookmark-image"/></a></figure></li></ul><ul id="e9193a7b-200f-4c77-92fb-a8520d4ec288" class="bulleted-list"><li style="list-style-type:disc">Climb on the shoulders of giants, not toes!</li></ul><ul id="7e28392e-edf4-46be-8313-938cfeead5a6" class="bulleted-list"><li style="list-style-type:disc">Load sensors are easy to make with capacitor plates.</li></ul></details></li></ul><div><ul id="cd2538a6-74e0-44ec-87ee-97bafdcccb77" class="toggle"><li><details open=""><summary>Electronics design </summary><ul id="37ee8c09-96e4-4e27-be95-73ab4b74582a" class="bulleted-list"><li style="list-style-type:disc">Check inventory for motors </li></ul><ul id="dfafbb4f-f960-435a-bbef-189149c02c9d" class="bulleted-list"><li style="list-style-type:disc">You can push ribbon cable to pins</li></ul><ul id="7ad7e9d6-e059-48aa-9f90-a0c20657cb74" class="bulleted-list"><li style="list-style-type:disc">Capacitors only transfer AC signal</li></ul><ul id="d83b9b41-27f8-4780-940c-9410675ccedb" class="bulleted-list"><li style="list-style-type:disc">We’ll use mosfets instead of transistors. They can act as variable transistors, we use them like switches.</li></ul><ul id="d7196476-c7b5-482f-8ea0-a5d9f5cfdf27" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/Pulse-Width-Modulation-4808b9ff2eb04acb9690d2773d244ae6">Pulse width modulation</a> instead of transistors to prevent heating</li></ul></details></li></ul></div><ul id="e071790f-feaa-44ba-994f-a20dd52a3dc7" class="toggle"><li><details open=""><summary>Recitation 2020 Robert M Hart</summary><ul id="05326f1a-6b39-4291-9b78-5134bf5edc14" class="bulleted-list"><li style="list-style-type:disc">Capacitor when connected serially acts as a low pass filter. When this is combined with pulse width modulation, you convert digital signal to analogue.</li></ul><ul id="2524c7f2-765a-48ff-b713-ae5aea56d425" class="bulleted-list"><li style="list-style-type:disc">Simulates Arduino in tinkercad, and PWM at:<figure id="b9e65f5d-5882-474a-93d1-6f7e3aa0108d"><a href="http://falstad.com/circuit/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">http://falstad.com/circuit/</div></div></a></figure></li></ul></details></li></ul><ul id="c0eb71a0-a533-431c-a34d-30029768f0b2" class="toggle"><li><details open=""><summary>Recitation - Zach Fredin</summary><ul id="b2f0d9c2-93df-4bbf-9a7e-0b592adfeef0" class="bulleted-list"><li style="list-style-type:disc">VSS means ground in data sheets</li></ul><ul id="54c20f1f-2d4b-4690-9d35-2f60a777fc06" class="bulleted-list"><li style="list-style-type:disc">RX, TX means receive and transmit</li></ul></details></li></ul><ul id="797d631a-6e21-40d2-b294-67b845e11d77" class="toggle"><li><details open=""><summary>Assignment</summary><ul id="62587f9c-b195-4759-911a-c932f81b8fce" class="bulleted-list"><li style="list-style-type:disc">Add at least a switch and an LED.</li></ul><ul id="9e50a23a-8e7c-4f1f-97c1-7d91e5de816b" class="bulleted-list"><li style="list-style-type:disc">Test that it communicates.</li></ul><ul id="3e34cb64-1729-4948-9fa7-d41d808f8131" class="bulleted-list"><li style="list-style-type:disc">Octopart is a search engine for parts </li></ul><ul id="787a8e16-73d5-4463-b5e7-0b8b164b7a6d" class="bulleted-list"><li style="list-style-type:disc">You can code PCB design </li></ul><figure id="17da34b9-8c28-4fff-9968-8179e67d6d81"><a href="http://academy.cba.mit.edu/classes/embedded_programming/index.html#echo" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div><div class="bookmark-description">architectures von Neumann, Harvard, bugs RISC, CISC microprocessor, microcontrollerGPU, TPU FPGA, TinyFPGA, IceStorm , Migen spatial memory registers (instructions) SRAM (fast) DRAM (big) EEPROM (non-volatile) FLASH (programs, strings) fuse (configuration)peripherals ports A/D comparator D/A timer/counter/PWM USART USB ...word size 8 16 32 64LOGIC Megaprocessor 8051 PIC MSP AVR * 6-100</div></div><div class="bookmark-href">http://academy.cba.mit.edu/classes/embedded_programming/index.html#echo</div></div></a></figure><p id="771b0f4c-d6ff-46d8-9fd8-e45c157e1c27" class="">hello.t412.echo</p><ul id="9e5cffb3-5a78-4999-ad13-e4de573f1998" class="toggle"><li><details open=""><summary>Using attiny 412 microcontroller</summary><figure id="9d96b698-85da-49f9-b44f-7289a41aee02"><a href="http://ww1.microchip.com/downloads/en/DeviceDoc/40001911A.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href"><img src="http://ww1.microchip.com/favicon.ico" class="icon bookmark-icon"/>http://ww1.microchip.com/downloads/en/DeviceDoc/40001911A.pdf</div></div></a></figure></details></li></ul><figure id="94a18ff4-9398-4ae7-87a9-c1707a35ab3d" class="image"><a href="assets/week4/Untitled.png"><img style="width:432px" src="assets/week4/Untitled.png"/></a></figure><figure id="537d894d-13a1-4483-a18c-d822bc6ac941" class="image"><a href="assets/week4/Untitled%201.png"><img style="width:384px" src="assets/week4/Untitled%201.png"/></a></figure><ul id="268f306d-594f-457c-9acc-fc897cb8a068" class="toggle"><li><details open=""><summary>Documentation</summary><ul id="7501c369-a13e-449b-9678-b2689861ac2b" class="toggle"><li><details open=""><summary>Initial replica</summary><figure id="9bde2335-d2ed-4832-ac6f-6be6445b2c10" class="image"><a href="assets/week4/Untitled%202.png"><img style="width:336px" src="assets/week4/Untitled%202.png"/></a></figure><figure id="09e157fa-9f29-449b-ad53-f47e708b6d6b" class="image"><a href="assets/week4/Untitled%203.png"><img style="width:288px" src="assets/week4/Untitled%203.png"/></a></figure><figure id="f81c6274-ff1a-4f22-93a0-19925fd9d387" class="image"><a href="assets/week4/Untitled%204.png"><img style="width:336px" src="assets/week4/Untitled%204.png"/></a></figure><figure id="cae0e139-55ed-4af4-b3e8-57aba2db0d95" class="image"><a href="assets/week4/Untitled%205.png"><img style="width:336px" src="assets/week4/Untitled%205.png"/></a></figure><figure id="11f6d6ee-6cfe-4060-9f76-772745800af5" class="image"><a href="assets/week4/Untitled%206.png"><img style="width:336px" src="assets/week4/Untitled%206.png"/></a></figure><figure id="590f16db-84e1-465a-8c22-6bf37016b61f" class="image"><a href="assets/week4/Untitled%207.png"><img style="width:336px" src="assets/week4/Untitled%207.png"/></a></figure><figure id="dc27bb0a-46b1-4dfe-b734-420daba5aae1" class="image"><a href="assets/week4/Untitled%208.png"><img style="width:336px" src="assets/week4/Untitled%208.png"/></a></figure><figure id="136bae83-63cf-4d98-b52e-b4a5f8096c2d" class="image"><a href="assets/week4/Untitled%209.png"><img style="width:336px" src="assets/week4/Untitled%209.png"/></a></figure><figure id="581c7891-5f6e-4229-9bdf-155882310355" class="image"><a href="assets/week4/Untitled%2010.png"><img style="width:336px" src="assets/week4/Untitled%2010.png"/></a></figure><figure id="e9594620-226e-4e84-b7ce-751dff312154" class="image"><a href="assets/week4/Untitled%2011.png"><img style="width:336px" src="assets/week4/Untitled%2011.png"/></a></figure><figure id="be90caad-a731-483c-853c-db2e6ceaa06f" class="image"><a href="assets/week4/Untitled%2012.png"><img style="width:288px" src="assets/week4/Untitled%2012.png"/></a></figure><figure id="6e275373-8e82-4eb2-bc70-a9cd39a1df17" class="image"><a href="assets/week4/Untitled%2013.png"><img style="width:288px" src="assets/week4/Untitled%2013.png"/></a></figure></details></li></ul><ul id="74c51be2-c6d4-42c6-a59c-ea6eb00b246c" class="toggle"><li><details open=""><summary>Adding an LED and a switch</summary><figure id="cfc726da-8c2e-4141-bd5c-aabe0e940e20" class="image"><a href="assets/week4/Untitled%2014.png"><img style="width:384px" src="assets/week4/Untitled%2014.png"/></a></figure><figure id="6b35f14c-76dc-43bb-b61b-0c20e16dff30" class="image"><a href="assets/week4/Untitled%2015.png"><img style="width:384px" src="assets/week4/Untitled%2015.png"/></a></figure><figure id="69f7248c-b847-4108-a77c-f88eb14d6059" class="image"><a href="assets/week4/Untitled%2016.png"><img style="width:384px" src="assets/week4/Untitled%2016.png"/></a></figure><figure id="01e78cc5-cf00-4d20-aa2c-9ee3a27bdcb8" class="image"><a href="assets/week4/Untitled%2017.png"><img style="width:384px" src="assets/week4/Untitled%2017.png"/></a></figure></details></li></ul></details></li></ul><ul id="85d22839-e5d9-4c36-83e5-cd41fdfce03a" class="toggle"><li><details open=""><summary>Office hours with Jake</summary><ul id="2518d62e-73f3-4fc3-8381-1d1e9a934ffe" class="bulleted-list"><li style="list-style-type:disc">Oscilloscope and bytes in UART. SPI is common in older stuff.</li></ul><ul id="7ef3ff2d-2f67-4cb2-95bf-d07f41a6d3ad" class="bulleted-list"><li style="list-style-type:disc">Doesn’t make much sense. Need more clear material on oscillators.</li></ul><ul id="1b03e6e2-80d1-41de-b3d9-2ccdd6045a13" class="bulleted-list"><li style="list-style-type:disc">Use trigger to catch a packet and then zoom in on it to see bytes.</li></ul></details></li></ul></details></li></ul><ul id="c9e43d71-fd0f-466a-9188-f53fa3c6a48e" class="toggle"><li><details open=""><summary>Additional resources</summary><figure id="8450a11b-eee8-4c2b-8af7-9b4069e1c6dd"><div class="bookmark source"><img style="width:1em;height:1em;margin-right:0.5em;vertical-align:text-bottom" src="https://drive-thirdparty.googleusercontent.com/64/type/application/vnd.google-apps.document"/><a href="https://docs.google.com/document/d/1iZU-KLs-s20nsQZU1Glbm4PiRDW4mIrg5NofNMod_VY/edit?usp=drivesdk">practical electronics primer</a><br/><a class="bookmark-href" href="https://docs.google.com/document/d/1iZU-KLs-s20nsQZU1Glbm4PiRDW4mIrg5NofNMod_VY/edit?usp=drivesdk">https://docs.google.com/document/d/1iZU-KLs-s20nsQZU1Glbm4PiRDW4mIrg5NofNMod_VY/edit?usp=drivesdk</a></div></figure><figure id="7ad9237d-f486-42af-ac0e-fbf4733d251b"><a href="https://contextualelectronics.com/courses/getting-to-blinky-5-0/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Getting to Blinky 5.0</div><div class="bookmark-description">Getting to Blinky 5.0 is a short video series introducing the key concepts of using the open source ECAD software KiCad. You will be building a small blinking board to cover each of these concepts. Understand how to use the base functions of the 5.0 version of KiCad.</div></div><div class="bookmark-href"><img src="https://contextualelectronics.com/wp-content/uploads/2016/12/cropped-CE2017-LogoOnly-NoBG-512x512-192x192.png" class="icon bookmark-icon"/>https://contextualelectronics.com/courses/getting-to-blinky-5-0/</div></div></a></figure><figure id="090c6aa8-8c13-4da1-86f8-b304c83bfb22"><a href="https://fab.cba.mit.edu/classes/863.21/Architecture/people/LauraMaria/index.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Laura Maria Gonzalez</div></div><div class="bookmark-href">https://fab.cba.mit.edu/classes/863.21/Architecture/people/LauraMaria/index.html</div></div><img src="https://fab.cba.mit.edu/classes/863.21/Architecture/people/LauraMaria/assets/412blink.jpg" class="bookmark-image"/></a></figure></details></li></ul><ul id="f22810b5-5a8c-4749-97fb-09722be87ac4" class="toggle"><li><details open=""><summary>New website design via Notion</summary><ul id="fd8b60bb-a0ad-4e60-9641-5ecbfead20f4" class="toggle"><li><details open=""><summary>format HTML</summary><figure id="dd0cbe5c-9aa4-41d0-a28a-d2be27e3906b"><a href="https://code.visualstudio.com/Docs/languages/html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">HTML Programming with Visual Studio Code</div><div class="bookmark-description">Get the best out of Visual Studio Code for HTML development</div></div><div class="bookmark-href"><img src="https://code.visualstudio.com/favicon.ico" class="icon bookmark-icon"/>https://code.visualstudio.com/Docs/languages/html</div></div><img src="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" class="bookmark-image"/></a></figure></details></li></ul></details></li></ul></div></article></body></html>

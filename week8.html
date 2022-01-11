@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Demircan Tas - How to Make Almost Anything</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Demircan Tas</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="final.html">Final - Rover</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week1.html">Week 1 - Cutting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week2.html">Week 2 - PCB's</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week3.html">Week 3 - 3D Scan & Print</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4.html">Week 4 - Circuit Board Design</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week5.html">Week 5 - CNC Machining</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week6.html">Week 6 - Embedded Programming</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week7.html">Week 7 - Molding and Casting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week8.html">Week 8 - Inputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week9.html">Week 9 - Outputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week10.html">Week 10 - Networking</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week11.html">Week 11 - Interfaces</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Action</a>
+                                    <a class="dropdown-item" href="#!">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+                <h1 class="mt-4">Week 8 - Inputs</h1>
+                <h2>Measuring Devices</h2>
+
+                <button class="collapsible">Creating a stable base line (1st attempt)</button>
+                <div class="content">
+                    <p>None of the PCB's I created for the previous weeks are functional. So, I wanted to create a new board, and more stable workflow for loading/testing software into it.</p>
+                    <p>This time I focused on AVR's, and to keep everything simple and safe, I started from Neil's design (link here). To program the board via UPDI, I also created this (link here).</p>
+                    <p>Using this (link here) cable adapter I followed (link here) to upload a sample echo (link here) program. In the first try, the program seemed to install, but when I connected the board through serial, it did not function.</p>
+                    <p>On further trials, I had an error (insert error here) and later noticed that my cable adapter is the 3.3 volt version.</p>
+                    <p>To provide the board with 5 volts, I used the power supply in the archshops which resulted in my attiny (add model no) board to literally get smoked.</p>
+                    <img src="assets/week8/IMG_20211104_182558.jpg" alt="smoked board and setup", width="720">
+                    <ul>
+                        <li>How do I provide power to a board with 2 pin UPDI? -with another serial adapter.</li>
+                        <li>Can I proceed with a 3.3 volt cable adapter? Or should I get a 5V one? -the existing board provides 5 volts.</li>
+                        <li>Is it possible that my cable adapter is also damaged? -it is fine.</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible">Attiny412 Switch Board</button>
+                <div class="content">
+                    <p>Trying to program an Attiny 412 with Kim, we came upon a design by Neil that includes an FTDI to UPDI conversion in a 6 pin serial connector.</p>
+                    <p>Based on this idea, I created an Attiny 412 board with an LED and a phototransistor.</p>
+                    <img src="assets/week8/IMG_20211108_164608.jpg" alt="first board", width="720">
+                    <br>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week8/blink.mp4" type="video/mp4">
+                    </video>
+                    <p>The great news is that this board can be programmed by connecting it to a PC via the USB to Serial adapter.</p>
+                    <p>Bad news is that TX and RX pins of the serial connector are occupied by UPDI. So we can not communicate with the board after programming.</p>
+                    <p>To solve the issue, I created a new design with two slider switches that allow the 6 pin serial connector to act as FTDI, and UPDI. Below is also the single switch prototype that can not transmit nor receive signals.</p>
+                    <img src="assets/week8/IMG_20211108_164619.jpg" alt="one switch", width="720">
+                    <img src="assets/week8/IMG_20211108_164821.jpg" alt="two switches", width="720">
+                    <p>Now I have a board that can be programmed, and communicate through a single 6 pin serial connector and a USB to serial adapter.</p>
+                    <img src="assets/week8/sw_schematics.png" alt="scjematics", width="720">
+                    <img src="assets/week8/sw_layout.png" alt="layout", width="720">
+                </div>
+                
+                <button class="collapsible">Reading Measurements from a Phototransistor.</button>
+                <div class="content">
+                    <p>Combining and modifying two sample programs, my board now prints the input from a phototransistor, and change the intensity of its LED.</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week8/shadow.mp4" type="video/mp4">
+                    </video>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week8/plot.mp4" type="video/mp4">
+                    </video>
+                    <p>For convenience in dark conditions, the LED turns of completely under a certain amount of light.</p>
+                    <p>Just out of curiosity, I plugged the serial port to Unreal Engine 4 to create an interactive scene with UE4duino (https://github.com/RVillani/UE4Duino).</p>
+                    <p>The sensor's behaviour varies greatly between daytime, and night light indoors. An auto-exposure like function could be in the plans for the future.</p>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week8/ue4test.mp4" type="video/mp4">
+                    </video>
+                    <video width="720" height="405" autoplay muted loop>
+                        <source src="assets/week8/day_test.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <button class="collapsible">Homemade USB to Serial Adapter.</button>
+                <div class="content">
+                    <p>In the electronics production week, I created Neil's SAMD11C serial adapter design. Although the board worked fine as an echo board, I have not been able to program another board with it until now.</p>
+                    <p>This week I figured out that the (insert link), bootloader only works when programming other SAMD11C's, and the (insert link) bootloader makes the board programmable via Arduino IDE.</p>
+                    <p>I have located (insert link) bootloader that actually makes the board function as a serial programmer for AVR's. However, the board can not receive signal from the programmed board.</p>
+                    <p>I have fount this (insert link) Arduiono sketch that should be what I need, but it does not compile, and is beyond my current C++ ability to debug.</p>
+                    <ul>
+                        <li>How do I enable this board to receive signal from a serial connection?</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible">Group Assignment</button>
+                <div class="content">
+                    
+                </div>
+
+                <button class="collapsible">Files</button>
+                <div class="content">
+                    <a href="assets/week8/files/switchDLight.7z" download>KiCad project</a><br>
+                </div>
+
+                <!--
+                        ><p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                        </p>
+                    -->
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

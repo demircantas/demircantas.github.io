@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Demircan Tas - How to Make Almost Anything</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Demircan Tas</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="final.html">Final - Rover</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week1.html">Week 1 - Cutting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week2.html">Week 2 - PCB's</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week3.html">Week 3 - 3D Scan & Print</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4.html">Week 4 - Circuit Board Design</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week5.html">Week 5 - CNC Machining</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week6.html">Week 6 - Embedded Programming</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week7.html">Week 7 - Molding and Casting</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week8.html">Week 8 - Inputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week9.html">Week 9 - Outputs</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week10.html">Week 10 - Networking</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week11.html">Week 11 - Interfaces</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Action</a>
+                                    <a class="dropdown-item" href="#!">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+                <h1 class="mt-4">Week 4 - Circuit Board Design</h1>
+                <h2>Designing a hello.t412.echo board</h2>
+
+                <p>My first goal was to just redesign the layout for Neil's existing hello.t412.echo board</p>
+                <button class="collapsible">Iteration 1: hello.t412.echo board</button>
+                <div class="content">
+                    <p>Using attiny 412 microcontroller and <a href="http://academy.cba.mit.edu/classes/embedded_programming/t412/hello.t412.echo.png">Neil's design</a> as a guide:</p>
+                        <ul>
+                            <li>I created schematics in Kicad,</li>
+                            <li>matched them to the footprints from fab library,<ul>
+                                <li>
+                                    Some people had problems installing the default footprint libraries that are necessary for a VCC footprint. I have managed to isolate the default libraries and uploaded them to <a href="https://www.dropbox.com/sh/rp7fs9yqz5mvetj/AACQ4dsofUe4wr9w5t71g7RPa?dl=0">this</a> directory for troubleshooting. I'll keep this link up for a week. If you need it after that, just contact me.
+                                </li>
+                            </ul></li>
+                            <li>exported NET file to the footprint editor,</li>
+                            <li>routed each component,</li>
+                            <li>and created a border polyline for outline cuttling.</li>
+                            <li>If you press alt-3 Kicad provides a cool 3d model view.</li>
+                          </ul>
+                    <img src="assets/week4/schematics_kicad.png" alt="schematics", width="360">
+                    <img src="assets/week4/footprint_match.png" alt="schematics", width="360">
+                    <img src="assets/week4/footprint_editor.png" alt="schematics", width="360">
+                    <img src="assets/week4/footprint_editor1.png" alt="schematics", width="360">
+                    <img src="assets/week4/footprint_editor2.png" alt="schematics", width="360">
+                    <img src="assets/week4/fp_3d.png" alt="schematics", width="360">
+                    <ul>
+                        <li>Kicad can export SVG files which need some tweaking in Inkscape before sending to mods for cutting.</li>
+                        <li>Remember to invert SVG in mods (this is tedious in Inkscape).</li>
+                    </ul>
+                    <img src="assets/week4/mods.jpg" alt="schematics", width="360">
+                    <img src="assets/week4/mods1.png" alt="schematics", width="360">
+                    <img src="assets/week4/mods2.png" alt="schematics", width="360">
+                    <ul>
+                        <li>In the first outline cut, the Roland SRM20 had a blinking failure and we had to restart it. Following the restart, despite checking the origin values in Mods, the origin was offset by almost 1cm. <br><img src="assets/week4/pt1/IMG_20211007_223000.jpg" alt="failure", width="360"></li>
+                        <li>The next cut was fine with minor variation in quality between Ganit, Kim, and I (with the same settings and endmill, probably due to a non-flat bed). <br><img src="assets/week4/pt1/IMG_20211007_230802.jpg" alt="", width="360"></li>
+                        <li>Jake shared some insight on the oscilloscope, which may come in handy once we program our boards. <br><img src="assets/week4/pt1/IMG_20211008_123355.jpg" alt="", width="360"></li>
+                        <li>One extra useful thing is the voltage source next to the oscilloscope.</li>                        
+                    </ul>
+                </div>
+
+
+                <button class="collapsible">Iteration 2: Adding a button and LED to the Attiny412 Echo</button>
+                <div class="content">
+                    <p>When the PCB was done, I went for the new design, which I would also solder.</p>
+                    <ul>
+                        <li>Initial iterations for the button & LED <br><img src="assets/week4/bl.png" alt="", width="640">
+                        <img src="assets/week4/bl1.png" alt="", width="640">
+                        <img src="assets/week4/bl2.png" alt="", width="640">
+                        <img src="assets/week4/bl3.png" alt="", width="640"></li>
+                        <li>First cuts were eventless, so I went directly to soldering components and shimming. <br>
+                        <img src="assets/week4/pt1/IMG_20211009_134807.jpg" alt="", width="640"></li>
+                        <img src="assets/week4/pt1/IMG_20211009_152714.jpg" alt="", width="640"></li>
+                        <img src="assets/week4/pt1/IMG_20211010_133038.jpg" alt="", width="640"></li>
+                    </ul>
+                        
+                    
+                </div>
+
+                <button class="collapsible">The long, long journey to (Almost) get the board programmed.</button>
+                <div class="content">
+                    <ul>
+                        <li>With a board, I went to the CBA shop to get a program in, but we were lacking the necessary intermediary boards. Zach helped install a bootloader for the D11C from the previous assignment, but we were unable to program the Attiny412.</li>
+                        <li>Moreover, the D11C did not function in the USB port. <br>
+                        <img src="assets/week4/pt1/IMG_20211010_133332.jpg" alt="", width="640">
+                        <img src="assets/week4/pt1/IMG_20211010_134520.jpg" alt="", width="640">
+                        </li>
+                        <li>Zach pointed me towards <a href="https://github.com/mraardvark/pyupdi"> this pyupdi website,</a> where I followed the schematics to create a serial cable that would hopefully provide a means to program the Attiny without a programmer board. I could not get this to work, but had some extra soldering practice.</li>
+                    </ul>
+                    <img src="assets/week4/pt1/IMG_20211010_162146.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211010_162206.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211010_163313.jpg" alt="", width="640">
+                    <ul>
+                        <li>On Monday, I went to the EECS shop to program my board. But we could not get any of the boards running.</li>
+                        <li>Anthony and Harrison provided some great advice on connector shapes and creating cable connectors. <br>
+                        <img src="assets/week4/pt1/IMG_20211011_154728.jpg" alt="", width="640"></li>
+                        <li>Decided to put the Attiny412 on hold for now, and create a new board: D11C with a USB. <br>
+                        <img src="assets/week4/pt1/IMG_20211012_045957.jpg" alt="", width="640"></li>
+                    </ul>
+                </div>
+
+                <button class="collapsible">Iteration 3: Creating a hello.D11C.echo</button>
+                <div class="content">
+                    <p>On Kicad, I tried to mimic Neil's layout for <a href="http://academy.cba.mit.edu/classes/embedded_programming/D11C/hello.D11C.echo">hello.D11C.echo</a>.</p>
+                    <img src="http://academy.cba.mit.edu/classes/embedded_programming/D11C/hello.D11C.echo.png" alt="", width="240">
+                    <ul>
+                        <li>On Kicad, with the recitation settings (0.5mm cut and margin), it was not possible to fit 3 lines between the microcontroller legs, let alone 4. And lowering the margins was not a great idea.</li>
+                        <li>Upon examining, and measuring Neil's PNG at Photoshop (with the right DPI), I figured he had 0.4mm tracks and gaps. Having 4 lanes in between the microcontroller legs was not possible with the footprints in the fab Kicad library.</li>
+                        <li>I created a custom footprint file for the D11C (link at bottom), that allows fitting 4 lanes under the chip.</li>
+                    </ul>
+                    <img src="assets/week4/pt1/hd.png" alt="", width="640">
+                    <img src="assets/week4/pt1/hd1.png" alt="", width="640">
+                    <img src="assets/week4/pt1/hd3.png" alt="", width="640">
+                    <img src="assets/week4/pt1/hd2.png" alt="", width="640">
+                    <img src="assets/week4/pt1/kicad_custom_foot.png" alt="", width="640">
+                    <p>Here are some of the failures from this week:</p>
+                    <img src="assets/week4/pt1/IMG_20211012_194725.jpg" alt="", width="480">
+                    <img src="assets/week4/pt1/IMG_20211012_194741.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211012_194807.jpg" alt="", width="640">
+                    <p>And the finished board with components and goofy fixes, because I forgot to trace one connection in Kicad.</p>
+                    <img src="assets/week4/pt1/IMG_20211012_063443.jpg" alt="", width="640">                    
+                </div>
+
+                <button class="collapsible">Getting it to finally talk back</button>
+                <div class="content">
+                    <p>On the dawn of the fifth day, we (I mean Laura) have finally managed to get both D11C's programmed. Boards need a bootloader pushed via EDBG, and programs sent via Arduino IDE. However, many things can, and did go wrong during the process.</p>
+                    <img src="assets/week4/pt1/IMG_20211012_065645.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211012_091740.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211012_092829.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211012_094556.jpg" alt="", width="640">
+                    <img src="assets/week4/pt1/IMG_20211012_094607.jpg" alt="", width="640">
+                    <p>Now both DC11's echo. However, one of them only works with the 2x5 connector tied to the programmer.</p>
+                    <h3>
+                        Special thanks to Laura, Harrison, Zach, Jake, and Anthony for putting up with our endless questions and issues through this rough yet fun week.
+                    </h3>
+                    <br>
+                </div>
+
+                <button class="collapsible">Lessons learned</button>
+                <div class="content">
+                    <ul>
+                        <li>Do not forget to plug boards to a power source when programming.</li>
+                        <li>All shops are a little different, a great opportunity to test new tools, meet cool people.</li>
+                        <li>Always check solders with a voltmeter.</li>
+                        <li>Don't rely solely on existing libraries.</li>
+                        <li>Peel excess copper by rotating the tweezers, and enjoy!</li>
+                        <li>Go for the tools that people do not use (Unless you like to sleep at nights).</li>
+                        <li>EECS shop has a sweet and smart PCB milling machine, with great results. <br><img src="assets/week4/pt1/eecs_machine.jpg" alt="", width="640"></li>
+                        <li>Do not yank connectors when they are stuck.</li>
+                        <li>Failed boards come in handy as weird hacks.</li>
+                        <li>Media Lab folks know how to party.</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible">Files</button>
+                <div class="content">
+                    <a href="assets/week4/pt1/demircan_SOIC-14_3.9x8.7mm_P1.27mm.kicad_mod" download>My custom Kicad footprint for D11C</a><br>
+                    <a href="assets/week4/pt1/kicad_whole_week.7z" download>Whole week in 245kb with Kicad</a>
+                </div>
+                
+                
+
+                <!--
+                        ><p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                        </p>
+                    -->
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="This is Demircan Tas's website to document work on the subject How to Make Almost Anything 2021 Fall at MIT" />
+        <meta name="author" content="Demircan Tas" />
+        <!-- This is what you see on the tab-->
+        <title>Demircan Tas - How to Make Almost Anything</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <!-- "class" is used to define a different type as a css handle-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="final.html">Final - Rover</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week1.html">Week 1 - Cutting</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week2.html">Week 2 - PCB's</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week3.html">Week 3 - 3D Scan & Print</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week4.html">Week 4 - Circuit Board Design</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week5.html">Week 5 - CNC Machining</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week6.html">Week 6 - Embedded Programming</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week7.html">Week 7 - Molding and Casting</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week8.html">Week 8 - Inputs</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week9.html">Week 9 - Outputs</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week10.html">Week 10 - Networking</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="week11.html">Week 11 - Interfaces</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!">Action</a>
+                                        <a class="dropdown-item" href="#!">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    
+                    <h1 class="mt-4"><a href="https://en.wikipedia.org/wiki/Phototaxis">Phototaxis</a> Rover</h1>
+                    <p>I made a rover that is afraid of darkness.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xGeI83BIIk8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <button class="collapsible">Initial Idea (Week 0)</button>
+                <div class="content">
+                    <p>To make the chassis/body out of cardboard and laser cutting, I made some tests in Maya.</p>
+                    <img src="assets/final/rover.JPG" alt="first trial for rover">
+                    <img src="assets/final/cutting_pattern.JPG">
+                    <p>And an unfolding idea for cheap fabrication</p>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/rover_unfold.mov" type="video/mp4">
+                    </video>
+                    <!-- link for CAD files-->
+                    <h2>CAD files</h2>
+                    <a href="assets/final/CAD/rover_sing.7z" download>Maya unfold test</a>
+                    <br>
+                    <a href="assets/final/CAD/unfold.dwg" download="">Unfolded curves (be mindful of overlapping lines)</a>
+                    <hr>                    
+                </div>
+
+                <button class="collapsible">Update (Week 3)</button>
+                <div class="content">
+                    <h2>Update</h2>
+                    <p>Using the laser cutter, I created the folding chassis prototypes out of cardboard, and played around with my press fit kit from <a href="week1.html">week 1</a>. During laser cutting, I noticed some overlapping lines, which almost became a fire hazard. I figured out that the when the 3d model is unfolded, some lines overlap.</p>
+                    <img src="assets/final/update/IMG_20211003_170234.jpg" alt="first prototype", width="640">
+                    <img src="assets/final/update/IMG_20211003_173210.jpg" alt="first prototype", width="640">
+                    <img src="assets/final/update/IMG_20211003_173239.jpg" alt="first prototype", width="640">
+                    <br>
+                    <img src="assets/final/update/IMG_20211003_173250.jpg" alt="press fit", width="640">
+                    <img src="assets/final/update/IMG_20211003_173410.jpg" alt="press fit short", width="640">
+                    <img src="assets/final/update/IMG_20211003_173512.jpg" alt="press fit with a fold", width="640">
+                    <br>
+                    <p>I also combined kit parts with the folding prototypes for some design exploration.</p>
+                    <img src="assets/final/update/IMG_20211003_173547.jpg" alt="design exploration", width="640">
+                    <img src="assets/final/update/IMG_20211003_173601.jpg" alt="design exploration", width="640">
+                    <img src="assets/final/update/IMG_20211003_173629.jpg" alt="design exploration", width="640">
+                </div>
+
+                <button class="collapsible">Update (Week 8)</button>
+                <div class="content">
+                    <p>After the ideation phase of molding & casting week, I decided to make the rover smaller for added cuteness, and easier production to (maybe) make more than a single one.</p>
+                    <p>So far I have:</p>
+                    <ul>
+                        <li>A <a href="week7.html#prototype_cad">prototype</a>  for the body design.</li>
+                        <img src="assets/final/update1/IMG_20211109_140851.jpg" alt="body", width="720">
+                        <li>AVR based <a href="week8.html">board design</a>, and working prototypes that have a photoresistor and can communicate through serial.</li>
+                        <img src="assets/final/update1/IMG_20211109_141001.jpg" alt="board", width="720">
+                    </ul>
+                    <p>I still need:</p>
+                    <ul>
+                        <li>A board design with photoresistors on four corners.</li>
+                        <li>Software to calculate a vector from the voltage difference between four sensors</li>
+                        <li>Software to convert the vector to a two channel signal to drive the wheels (similar to how a tank steers)</li>
+                        <li>A modular board setup that may integrate motors, drivers, and sensors.</li>
+                    </ul>
+                    <p>What works:</p>
+                    <ul>
+                        <li>The <a href="https://www.amazon.com/dp/B08BLKCXL4/ref=sspa_dk_detail_0?psc=1&pd_rd_i=B08BLKCXL4&pd_rd_w=lByvV&pf_rd_p=887084a2-5c34-4113-a4f8-b7947847c308&pd_rd_wg=9KPHC&pf_rd_r=BPV1S9FDZVS0X32JZEXW&pd_rd_r=51f39960-23c7-4fd3-9b48-b42afa9245d4&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzQkE0RlZZMUdVWUFVJmVuY3J5cHRlZElkPUEwNDA4OTM3VTdRTzZZQzQ4SDRDJmVuY3J5cHRlZEFkSWQ9QTEwMzg0ODAzUVEwSk1QWjcwMEtSJndpZGdldE5hbWU9c3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==">FTDI to USB cable</a> based on <a href="https://ftdichip.com/wp-content/uploads/2020/08/DS_FT232R.pdf">DS_FT232R</a> works flawlessly so far for programming and communicating with my boards based on ATTiny412.</li>
+                        <li>Photoresistors provide analog signal with far greater precision than I would expect</li>
+                        <li>ATTiny is far easier to design and produce around than SAMD11c</li>
+                    </ul>
+                    <p>What does not work:</p>
+                    <ul>
+                        <li>My SAMD11c based serial programmer can program AVR boards, but can not communicate with them. I understand that the board design is physically capable, with TX and RX running through the six pin serial conector, but I am having trouble with the software. The <a href="https://fabacademy.org/2020/labs/ulb/students/quentin-bolsee/3d/project_d11c_serial/D11C_serial_8E2.bin">bootloader</a> that I am using are binary files which I can not modify. I located a <a href="https://github.com/qbolsee/SAMD11C_serial/blob/main/SAMD11C_serial/SAMD11C_serial.ino">.ino sketch</a> which does not compile due to an error ("'Serial2' was not declared in this scope").</li>
+                        <img src="assets/final/update1/IMG_20211109_141017.jpg" alt="Serial programmer", width="720">
+                        <li>ARM based designs with USB input are more tedious to design, with connections to USB and the programming connector, require shimming all the time, and are slower and less efficient to load sketches on (due to the need for a bootloader). But they do work.</li>
+                    </ul>
+                    <p>Questions to resolve:</p>
+                    <ul>
+                        <li>How do I make/program a D11c serial programmer that can program and communicate with AVR based PCB's?</li>
+                        <li>How do I connect motors to my board? What size motors, boards, batteries, peripherals do I need?</li>
+                        <li>How do I upgrade the system to one with ESP32CAM's if I want to use a more sophisticated, computer vision based sensing moethod? Can I have a modular design where I can add/remove the ESP32?</li>
+                    </ul>
+                    <p>What happens when:</p>
+                    <ul>
+                        <li>Board design with four sensors, in the following week</li>
+                        <li>I resolve motors, batteries in the output week</li>
+                        <li>I get my serial programmer to communicate for independence from a cable adapter that I can not make myself. This is not urgent, but I want to be able use my own programmer</li>
+                        <li>A new design iteration based on motor, wheel, battery, peripheral size, after sorting out motors</li>
+                    </ul>
+                    <p>What I learned:</p>
+                    <ul>
+                        <li>Soldering joints</li>
+                        <li>How to design, fabricate, and program AVR's and ARM's</li>
+                        <li>Creating programmers for AVR's and ARM's</li>
+                        <li>Testing my boards with blink, button, and echo setups</li>
+                        <li>Using molds to rapidly create multiple physical parts with materials that I can not 3d print conveniently</li>
+                        <li>Laser cutting modular pieces for physical design exploration</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible">Update (Week 11)</button>
+                <div class="content">
+                    <p>This week, I built a prototype with 4 phototransistors, 4 vibromotors, an FTDI serial connection and an LED, around an ATTiny1614.</p>
+                    <img src="assets/week11/fBoard_schematics.png" alt="Schematics", height="360">
+                    <img src="assets/week11/fBoard_PCB.png" alt="PCB design", height="360">
+                    <img src="assets/week11/fBoard_3d.png" alt="3d visualization", height="360">
+                    <p>I placed transistors on the corners, creating a 2x2 grid for light readings.</p>
+                    <img src="assets/week11/fin_board.jpg" alt="milled board", width="360">
+                    <img src="assets/week11/fin_board_t1_soldered.jpg" alt="board with components", width="360">
+                    <p>My first milling attempt was a little rough towards one side due to poor adhesion, yet it was functional after a light pass with sandpaper. I decided to recycle the first attempt as a platform to solder vibro motors, and build a new board just to be safe.</p>
+                    <p>I wrote a basic software for the board, that reads analogue signals from each sensor, multiplies it by a value, and sends it as an analog/pwm signal to the corresponding vibromotor.</p>
+                    <img src="assets/week11/fin_board_p_motors.jpg" alt="board and motors", width="640"><br>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week11/vibrotest_free.mp4" type="video/mp4">
+                    </video>
+                    <p>After a while vibromotors started ripping of the solder joints, so I constrained them.</p>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week11/vibrotest_constrained_working.mp4" type="video/mp4">
+                    </video>
+
+                </div>
+
+                <button class="collapsible">Update (Week 12 assembly)</button>
+                <div class="content">
+                    <p>I hot glued vibromotors to a cardboard chassis, and soldered their grounds to a piece of adhesive copper.</p>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week12/vibro_test.mp4" type="video/mp4">
+                    </video><br>
+                    <img src="assets/week12/IMG_20211207_182931.jpg" alt="copper", width="720">
+                    <img src="assets/week12/IMG_20211207_183029.jpg" alt="tape", width="720">
+                    <img src="assets/week12/IMG_20211207_185831.jpg" alt="more tape", width="720">
+                    <img src="assets/week12/IMG_20211207_190014.jpg" alt="assembly", width="720">
+                    <img src="assets/week12/IMG_20211207_191028.jpg" alt="assembly1", width="720">
+                    <img src="assets/week12/IMG_20211207_191311.jpg" alt="assembly2", width="720">
+                    <img src="assets/week12/IMG_20211207_191330.jpg" alt="assembly3", width="720">
+                </div>
+
+                <button class="collapsible">Update (Week 12 results)</button>
+                <div class="content">                    
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week12/vibro_turnaround.mp4" type="video/mp4">
+                    </video>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week12/vibro_alive.mp4" type="video/mp4">
+                    </video>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week12/vibro_dark.mp4" type="video/mp4">
+                    </video>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/week12/vibro_dark1.mp4" type="video/mp4">
+                    </video>
+                    <p>The rover does freak out in the dark, and somewhat seeks light. However, the code does not yet include the vector representation, and the rover ends up rotating right. I need to calibrate sensors in a balance state.</p>
+                </div>
+
+                <button class="collapsible">Update (Week 13 wheels)</button>
+                <div class="content">
+                    <p>I replaced vibromotor weights with 3d printed wheels.</p>
+                    <img src="assets/final/final_week/IMG_20211209_110035.jpg" alt="plastic wheels", width="720">
+                    <img src="assets/final/final_week/IMG_20211209_110346.jpg" alt="no grip", width="720">
+                    <p>PLA did not have enough grip to move the rover. I used heat shrink tubing as tires.</p>
+                    <p>Now the wheels either do burnouts, or stall. My conclusion is that the vibro motors have too little torque and too much speed.</p>
+                    <img src="assets/final/final_week/IMG_20211209_111448.jpg" alt="heat shrink", width="720">
+                    <img src="assets/final/final_week/IMG_20211209_111601.jpg" alt="heat shrink cut", width="720">
+                    <img src="assets/final/final_week/IMG_20211209_111721.jpg" alt="heat shrink upside down", width="720">
+                    <br>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/heatshrink.mp4" type="video/mp4">
+                    </video>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/heatshrink_burnout.mp4" type="video/mp4">
+                    </video>
+                    <p>A potential solution would be to hack servo motor gears. I decided to go back to vibromotors to conserve time.</p>
+                    
+                </div>
+
+                
+                <button class="collapsible">Update (Week 13 Locomotion)</button>
+                <div class="content">
+                    <p>Controlling direction on a vibrating robot turned out to be a challenge. After experimenting with code, different surfaces, and center of gravity for hours my cardboard chassis finally gave up.</p>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/v_moonwalk.mp4" type="video/mp4">
+                    </video>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/v_wild.mp4" type="video/mp4">
+                    </video>
+                    <p>I designed, modeled, and 3d printed a three part body for added stability. The body is a square shape with phototransistors on each corner. I kept the bottom flat, in order to experiment with different designs for legs.</p>
+                    <img src="assets/final/final_week/IMG_20211210_213052.jpg" alt="chassis", width="720">
+                    <img src="assets/final/final_week/IMG_20211210_222137.jpg" alt="chassis assembly", width="720">
+                    <img src="assets/final/final_week/IMG_20211210_223444.jpg" alt="PCB inserted", width="720">
+                    <img src="assets/final/final_week/IMG_20211210_223806.jpg" alt="battery", width="720">
+                    <img src="assets/final/final_week/IMG_20211210_223018.jpg" alt="further assembly", width="720">
+                    <img src="assets/final/final_week/IMG_20211210_223048.jpg" alt="hello there!", width="720">
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/l_dark.mp4" type="video/mp4">
+                    </video>
+                    <br>
+
+                    <p>I also discovered bristle bots, which typically are simpler versions of my project with just a battery and one vibromotor connected to a tootbrush head. However, I discovered one video where two brushes are used like tank threads, wirelessly connected to a gamepad resulting in somewhat controllable movement.</p>
+                    <p>I tried different approaches for 3d printing legs of <a href="https://github.com/osbock/droobots"> brushes</a>, ending up modifying a <a href="https://www.thingiverse.com/thing:17879"> design with curved legs</a> that proved to be the most controllable.</p>
+                    <img src="assets/final/final_week/IMG_20211211_215307.jpg" alt="brushy", width="720">
+                    <br>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/wa_melty.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/l_wheel.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                    <img src="assets/final/final_week/IMG_20211212_171255.jpg" alt="flat legs", width="720">
+                    <br>
+                    <img src="assets/final/final_week/IMG_20211211_194319.jpg" alt="curvy", width="720">
+                    <p>By running vibromotors at different speeds (with PWM), and in different configurations, I can make the bot:</p>
+                    <ul>
+                        <li>Go straight (RR, FL)</li>
+                        <li>Tight turn clockwise (FL), counter clockwise (FR)</li>
+                        <li>Broad turn clockwise (RL, FR), counter clockwise (RL)</li>
+                    </ul>
+                    <p>The combinations are quite unintuitive. Possibly because the center of gravity is in an awkward position, and there are performance differences among vibro motors.</p>
+                    <video width="320" height="240" autoplay muted loop>
+                        <source src="assets/final/final_week/f_bump.mp4" type="video/mp4">
+                    </video>
+                    <video width="320" height="240" autoplay muted loop>
+                        <source src="assets/final/final_week/f_loop.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/f_follow.mp4" type="video/mp4">
+                    </video>
+                    <p>I will update my code to include a state machine with different motor combinations for steering.</p>
+                    <p>I need a function that takes 2 dimensional vectors which I acquire from signal difference among four phototransistors on each corner of the rover. The function should switch states based on thresholds in vector axes.</p>
+                    <p>What I would prefer is a 'fuzzy' state machine, where to rover could be in between states for more organic motion (this happens a lot in character animation).</p>
+                </div>
+
+                <button class="collapsible">Update (Week 13 Software)</button>
+                <div class="content">
+                    <p>My current software has a primitive state machine that steers the rover based on lateral difference (vX) between the sensors.</p>
+                    <p>Light intensity has an inverse relationship to power transmitted to vibromotors.</p>
+                    <p>Result is a rover that steers towards light and calms down when under light, yet freaks out in darkness.</p>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/n_dark.mp4" type="video/mp4">
+                    </video>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/n_light.mp4" type="video/mp4">
+                    </video>                    
+                    <p>Next step is to utilize longtitudal light difference (vZ) to create a smarter mode of navigation.</p>
+                </div>
+
+                <button class="collapsible">Materials</button>
+                <div class="content">
+                    <ul>
+                        <li><a href="https://www.amazon.com/BestTong-Vibration-14000RPM-Miniature-Vibrating/dp/B074P9SSSJ/ref=sr_1_3_sspa?keywords=vibration+motor&qid=1639382496&sr=8-3-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFOT1VYOVM1SEVMVjcmZW5jcnlwdGVkSWQ9QTA3ODI1MTAxQjNRNU1VTVJZRzczJmVuY3J5cHRlZEFkSWQ9QTAyNTQ3MDIyMFhBWTFUWVQ3SDZKJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==">Vibration motors x4</a></li>
+                        <li><a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY1614-SSNR/7354616">ATTINY1614 x 1</a></li>
+                        <li>10k resistors x4</li>
+                        <li>5k resistor x1</li>
+                        <li>1k resistor x1</li>
+                        <li>LED orange x1</li>
+                        <li>1uF capacitor x1</li>
+                        <li>10uF capacitor x1</li>
+                        <li>slider switch x2</li>
+                        <li>1x6 horizontal FTDI connector x1</li>
+                        <li>Surface mounted phototransistor x4</li>
+                        <li>2x2 vertical connector (2.54mm) x1</li>
+                    </ul>
+                    <ul>
+                        <p>Files:</p>
+                        <a href="assets/final/material/print3d.7z" download>STL files</a><br>
+                    <a href="assets/final/material/t1614vibroDLight.7z" download>KiCad project and SVG's</a><br>
+                    <a href="assets/final/material/vibroDFinal.ino" download>Arduino Sketch</a>
+                    </ul>
+                </div>
+                    
+                <button class="collapsible">Further Work</button>
+                <div class="content">
+                    <p>In parallel to the small vibromotor rover, I developed a larger one with geared DC motors.</p>
+                    <p>One approach was to connect motors to a cardboard chassis with cables routed in the grooves. I had to abandon this idea temporarily due to material and time constraints.</p>
+                    <img src="assets/week12/IMG_20211207_131726.jpg" alt="cardboard routing", width="720">
+                    <p>Instead, I used LEGO parts and bolts to put together a variable stiffness development chassis.</p>
+                    <video width="640" height="480" autoplay muted loop>
+                        <source src="assets/final/final_week/bigboi_straight.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                    <video width="320" height="240" autoplay muted loop>
+                        <source src="assets/final/final_week/bigboi_cw.mp4" type="video/mp4">
+                    </video>
+                    <video width="320" height="240" autoplay muted loop>
+                        <source src="assets/final/final_week/bigboi_ccw.mp4" type="video/mp4">
+                    </video>
+                    <p>Using my boards from networking week, I connected an ESP32 to my main ATTiny1614 board, which then connects directly to the motors. The motors are rated for 4.5 volts, however I can run them two at a time from a 3.5 Volt LiPo battery, and even 2 volts from a power supply. However, when I connect motors directly to the microcontroller, I get no movement.</p>
+                    <img src="assets/final/final_week/IMG_20211209_180002.jpg" alt="boards not working", width="720">
+                    <p>Checking with the multimeter, I noticed no resistence between the ground and power pins on the motors.</p>
+                    <p>I will return to this project on a later spiral. For the time being my focus is on completing and documenting the small version.</p>
+                </div>
+
+                <button class="collapsible">Acknowledgements</button>
+                <div class="content">
+                    <ul>
+                        <p>Thanks:</p>
+                        <li>Anthony Pennes</li>
+                        <li>Calvin Zhong</li>
+                        <li>Harrison M Allen</li>
+                        <li>Jake Read</li>
+                        <li>Laura Maria Gonzales</li>
+                        <li>Neil Gershenfeld</li>
+                        <li>Zach Fredin</li>
+                    </ul>
+                    <ul>
+                        <p>Special Thanks:</p>
+                        <li>Ganit Goldstein</li>
+                        <li>Il Hwan Kim</li>
+                        <li>Zach Schumacher</li>
+                    </ul>
+                </div>
+
+                    <!--
+                        ><p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                        </p>
+                    -->
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+    </body>
+</html>
