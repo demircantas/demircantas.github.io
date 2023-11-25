@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Template Matching</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#upload-form').submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: '/template-matching',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        var canvas = document.getElementById('canvas');
+                        var ctx = canvas.getContext('2d');
+                        var img = new Image();
+                        img.onload = function() {
+                            ctx.drawImage(img, 0, 0);
+                            ctx.strokeStyle = 'red';
+                            ctx.lineWidth = 2;
+                            ctx.strokeRect(data.x, data.y, data.width, data.height);
+                        };
+                        img.src = URL.createObjectURL(formData.get('image'));
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Submit</button>
+    </form>
+    <canvas id="canvas"></canvas>
+</body>
+</html>
