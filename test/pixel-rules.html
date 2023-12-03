@@ -9,7 +9,8 @@
                 event.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
-                    url: '/template-matching',
+                    # url: '/template-matching',
+                    url: '/127.0.0.1:5000',
                     type: 'POST',
                     data: formData,
                     processData: false,
