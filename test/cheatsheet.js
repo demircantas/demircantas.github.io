@@ -26,6 +26,9 @@ let second_test = `result is ${z + test_object.age}!`
     // drawing on canvas in HTML
     let myCanvas = document.getElementById("myCanvas");
     let ctx = myCanvas.getContext("2d");
+    const myImg = new Image();
+    myImg.src = './sourceimages/test_binary.png';
+    myImg.onload = () => { ctx.drawImage(myImg, 0, 0); };
 
     // draw a line
     ctx.moveTo(5, 5);
