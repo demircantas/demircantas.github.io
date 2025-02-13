@@ -1,0 +1,49 @@
+/* The first part is the selector and curly braces contain the declaration. */
+p {
+    /* set color to dark indigo blue */
+    color: #3b3b4f;
+}
+
+/* Define accent color as a custom property to reuse throughout different parts of the website */
+:root {
+    --color-accent: #ff6600;
+}
+
+
+#header {
+    font-size: 24px;
+}
+
+/* Set link colors to blood orange */
+
+a {
+    color: #12753f;
+}
+
+/* Set max width of body to 20 characters */
+/* Center all content using `auto` for the left and right margins */
+/* Add padding of 5% */
+body {
+    max-width: 70ch;
+    margin-inline: auto;
+    padding: 5%;
+}
+
+.navbar {
+    display:flex;
+    justify-content: space-between;
+    background-color: #b8ddd8;
+    padding: 10px 20px; 
+}
+
+.navbar a {
+    color: #3b3b4f;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.navbar a:hover {
+    color: #ff6600;
+    border-radius: 5px;
+}
+
