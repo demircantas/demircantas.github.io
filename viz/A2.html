@@ -2,6 +2,26 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>Vis &amp; Society Assignment 2</title>
+	    <style>
+        	table {
+            	width: 100%;
+            	border-collapse: collapse;
+        	}
+        	th, td {
+            	border: 1px solid black;
+            	padding: 8px;
+            	text-align: left;
+        	}
+        	th {
+            	background-color: #f2f2f2;
+        	}
+        	code {
+            	background-color: #eef;
+            	padding: 2px 4px;
+            	border-radius: 4px;
+            	font-family: monospace;
+        	}
+    	</style>
 	<link rel="stylesheet" href="Vis%20&amp;%20Society%20Assignment%202_files/report.css">
 </head>
 
@@ -13,29 +33,81 @@
 		</h1>
 
 		<p>
-			<strong>Your Name</strong> — <em>Your MIT Email Address</em>
+			<strong>Demircan Tas</strong> — <em>tasd@mit.edu</em>
 		</p>
 	</header>
 	<main>
 		<section>
-			<h2>Subtheme: [ENTER SUBTHEME]</h2>
+			<h2>Subtheme: [Transit Oriented Development]</h2>
 
 			<h3>Overall Analysis Questions</h3>
 			<ol>
-				<li>QUESTION_1</li>
-				<li>QUESTION_2</li>
-				<li>QUESTION_3</li>
-				<li>...</li>
+				<li>How does the frequency and connectivity of MBTA services at different stations correlate with the surrounding population density?</li>
+				<li>What is the relationship between the proximity MBTA stations and the availability of amenities such as parks, schools, and retail establishments?</li>
+				<li>How do property values vary in relation to their distance from MBTA stations?</li>
+				<!-- <li>...</li> -->
+				<p>
+					My motivation for these questions stems from a desire to understand how transit infrastructure can shape urban dynamics and improve quality of life. By focusing on the MBTA network, I aim to explore how transit connectivity (node value) relates to population density, how proximity to transit enhances urban amenities (place value), and how these factors influence property values (market value). This inquiry is inspired by the comprehensive 3V approach, which emphasizes the interconnected benefits of effective transit-oriented development as described in the World Bank article <a href="https://www.worldbank.org/en/topic/transport/publication/transforming-the-urban-space-through-transit-oriented-development-the-3v-approach" target="_blank">Transforming the Urban Space Through Transit-Oriented Development: The 3V Approach</a>. Analyzing these aspects will not only shed light on the current state of urban development in transit-accessible areas but also provide insights into potential strategies for sustainable growth.
+				</p>
+
 			</ol>
 		</section>
 
 		<section>
 			<h2>Discoveries &amp; Insights</h2>
+			For this assignment I will be focusing on the MBTA network datasets from [data source] including MBTA lines, stops, and their buffered versions.
+
+				<table>
+        			<tr>
+            			<th>Dataset Name</th>
+            			<th>Description</th>
+            			<th>Topics Covered</th>
+        			</tr>
+        			<tr>
+            			<td><code>mbta_lines.geojson</code></td>
+            			<td>This dataset, derived from the MBTA's GTFS feed, represents transit routes as multiline geometries in GeoJSON format. Each feature corresponds to a transit route operated by the MBTA, with attributes such as <code>route_id</code>, <code>route_long_name</code>, <code>route_color</code>, and <code>route_url</code>. The dataset is converted from <code>routes.txt</code> into a <code>MULTILINESTRING</code> format using <code>gtfs-to-geojson</code>, with a deduplicated version removing redundant <code>route_long_name</code> entries.</td>
+            			<td>Used for transit network visualization, route mapping, and accessibility analysis. Beneficial for urban planning, public transportation studies, and integrating with real-time vehicle tracking.</td>
+        			</tr>
+        			<tr>
+            			<td><code>mbta_lines_with_buffer.geojson</code></td>
+            			<td>This dataset extends <code>mbta_lines.geojson</code> by incorporating a 50-meter buffer around transit routes, representing them as multipolygon geometries in GeoJSON format. Extracted from <code>routes.txt</code> in the GTFS feed, it includes attributes like <code>route_id</code>, <code>route_long_name</code>, <code>route_color</code>, and <code>route_url</code>. The geometry is stored as <code>MULTIPOLYGON</code>, offering a broader spatial representation of MBTA transit corridors.</td>
+            			<td>Useful for transit impact assessments, accessibility studies, and urban infrastructure planning. Supports analysis of pedestrian and cyclist access to transit routes and helps visualize the influence of transit networks on surrounding areas.</td>
+        			</tr>
+        			<tr>
+						<tr>
+							<td><code>mbta_stops.geojson</code></td>
+							<td>This dataset contains all transit stops in the MBTA network, extracted from the GTFS <code>stops.txt</code> file and enriched with route associations. Each stop is represented as a GeoJSON <code>Point</code> with attributes such as <code>stop_name</code>, <code>stop_id</code>, <code>zone_id</code>, <code>wheelchair_boarding</code>, and <code>routes</code>. The dataset provides detailed information about MBTA stops, including their locations and accessibility status.</td>
+							<td>Useful for transit stop mapping, accessibility analysis, and multimodal transportation planning. It supports applications in public transit optimization, urban mobility studies, and stop clustering analysis.</td>
+						</tr>
+						<tr>
+							<td><code>mbta_stops_collapsed.geojson</code></td>
+							<td>This dataset is a deduplicated version of <code>mbta_stops.geojson</code>, where stops with identical <code>stop_name</code>, <code>zone_id</code>, and <code>stop_url</code> have been collapsed to a single entry. Through this process, 569 duplicate stops were removed, improving data clarity while retaining essential stop-level attributes.</td>
+							<td>Helps in reducing redundancy in transit stop datasets, improving efficiency for GIS applications and urban mobility research. Suitable for clustering analyses, transit station accessibility studies, and ridership estimations.</td>
+						</tr>
+						<tr>
+							<td><code>mbta_stops_with_buffer_collapsed.geojson</code></td>
+							<td>This dataset extends <code>mbta_stops_collapsed.geojson</code> by adding a buffer around each stop, representing a pedestrian-accessible area. Each stop is stored as a GeoJSON <code>Polygon</code> instead of a <code>Point</code>, reflecting a defined spatial reach around the stop for transit accessibility studies.</td>
+							<td>Valuable for walkability assessments, transit coverage analysis, and studies on first/last-mile connectivity. Supports urban planning by visualizing how well transit stops serve surrounding areas.</td>
+						</tr>
+        			</tr>
+        			<tr>
+						<tr>
+							<td><code>mbta_stops_with_buffer.geojson</code></td>
+							<td>This dataset was generated from the MBTA's GTFS feed, adding a 0.5 mile (805 meters) buffer around each transit stop, creating polygonal representations for the stops. The data originally extracted from <code>stops.txt</code> file includes stop details such as <code>stop_name</code>, <code>zone_id</code>, and <code>routes</code>, all transformed into a GeoJSON format with polygons representing buffered areas.</td>
+							<td>Essential for accessibility studies, urban planning, and the creation of walkable areas around transit stops. It helps visualize the potential influence of transit accessibility on urban development and planning.</td>
+						</tr>
+						<tr>
+							<td><code>mbta_stops_with_buffer_collapsed.geojson</code></td>
+							<td>Derived from <code>mbta_stops_with_buffer.geojson</code>, this dataset removes duplicate entries for stops sharing the same <code>stop_name</code>, <code>zone_id</code>, and <code>stop_url</code>, simplifying the data set while maintaining a spatial buffer around each unique stop as a GeoJSON polygon.</td>
+							<td>Useful in minimizing data redundancy in urban mobility research, optimizing transit-oriented development studies, and supporting policy-making for enhanced transit stop accessibility and connectivity.</td>
+						</tr>
+        			</tr>
+    			</table>
 
 			<figure>
-				<img src="Vis%20&amp;%20Society%20Assignment%202_files/IMAGE_FILENAME.htm" alt="">
+				<img src="Vis & Society Assignment 2_files/sourceimages/cape_cod.png" alt="Descriptive text" style="width: 100%; height: auto;">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+					Upon checking <code>agency_name</code>, we realized that a line that belongs to the <a href="https://capecodrta.org/">Cape Cod Regional Transit Authority</a> is included in the dataset. We filtered this line for simplifying the dataset.
 				</figcaption>
 			</figure>
 
