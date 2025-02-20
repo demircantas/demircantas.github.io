@@ -55,13 +55,19 @@
 
 		<section>
 			<h2>Discoveries &amp; Insights</h2>
-			For this assignment I will be focusing on the MBTA network datasets from [data source] including MBTA lines, stops, and their buffered versions.
+			<p> For this assignment I will be focusing on the MBTA network datasets provided for the assignment including MBTA lines, stops, and their buffered versions. </p>
+			<p> Upon finding out that the lines are limited to shape features with shapes and identifiers, I decided to explore single family zoning datasets to better address my questions. </p>
 
 				<table>
         			<tr>
             			<th>Dataset Name</th>
             			<th>Description</th>
             			<th>Topics Covered</th>
+        			</tr>
+					<tr>
+            			<td><code>housing_sf_other_w_census.csv</code></td>
+            			<td>This dataset from MAPC's Zoning Atlas includes spatial data and tabular data for single-family and other housing in zoning districts of 101 municipalities in the MAPC region. It combines zones by whether they are only for single-family housing or other housing types, aggregating race and income data from the census. Attributes include <code>muni_id</code>, <code>muni</code>, <code>only_single_family</code>, <code>%_single_family</code>, and various demographic details like <code>pop</code>, <code>male</code>, <code>female</code>, and income brackets like <code>incu10</code> to <code>in200o</code>.</td>
+            			<td>Valuable for urban planning, housing policy analysis, and demographic studies. Helps municipalities understand zoning impacts on residential development patterns and social dynamics. Useful in analyzing how zoning relates to the socioeconomic characteristics of areas, particularly in the context of affordable housing and urban growth.</td>
         			</tr>
         			<tr>
             			<td><code>mbta_lines.geojson</code></td>
@@ -74,34 +80,10 @@
             			<td>Useful for transit impact assessments, accessibility studies, and urban infrastructure planning. Supports analysis of pedestrian and cyclist access to transit routes and helps visualize the influence of transit networks on surrounding areas.</td>
         			</tr>
         			<tr>
-						<tr>
-							<td><code>mbta_stops.geojson</code></td>
-							<td>This dataset contains all transit stops in the MBTA network, extracted from the GTFS <code>stops.txt</code> file and enriched with route associations. Each stop is represented as a GeoJSON <code>Point</code> with attributes such as <code>stop_name</code>, <code>stop_id</code>, <code>zone_id</code>, <code>wheelchair_boarding</code>, and <code>routes</code>. The dataset provides detailed information about MBTA stops, including their locations and accessibility status.</td>
-							<td>Useful for transit stop mapping, accessibility analysis, and multimodal transportation planning. It supports applications in public transit optimization, urban mobility studies, and stop clustering analysis.</td>
-						</tr>
-						<tr>
-							<td><code>mbta_stops_collapsed.geojson</code></td>
-							<td>This dataset is a deduplicated version of <code>mbta_stops.geojson</code>, where stops with identical <code>stop_name</code>, <code>zone_id</code>, and <code>stop_url</code> have been collapsed to a single entry. Through this process, 569 duplicate stops were removed, improving data clarity while retaining essential stop-level attributes.</td>
-							<td>Helps in reducing redundancy in transit stop datasets, improving efficiency for GIS applications and urban mobility research. Suitable for clustering analyses, transit station accessibility studies, and ridership estimations.</td>
-						</tr>
-						<tr>
-							<td><code>mbta_stops_with_buffer_collapsed.geojson</code></td>
-							<td>This dataset extends <code>mbta_stops_collapsed.geojson</code> by adding a buffer around each stop, representing a pedestrian-accessible area. Each stop is stored as a GeoJSON <code>Polygon</code> instead of a <code>Point</code>, reflecting a defined spatial reach around the stop for transit accessibility studies.</td>
-							<td>Valuable for walkability assessments, transit coverage analysis, and studies on first/last-mile connectivity. Supports urban planning by visualizing how well transit stops serve surrounding areas.</td>
-						</tr>
-        			</tr>
-        			<tr>
-						<tr>
-							<td><code>mbta_stops_with_buffer.geojson</code></td>
-							<td>This dataset was generated from the MBTA's GTFS feed, adding a 0.5 mile (805 meters) buffer around each transit stop, creating polygonal representations for the stops. The data originally extracted from <code>stops.txt</code> file includes stop details such as <code>stop_name</code>, <code>zone_id</code>, and <code>routes</code>, all transformed into a GeoJSON format with polygons representing buffered areas.</td>
-							<td>Essential for accessibility studies, urban planning, and the creation of walkable areas around transit stops. It helps visualize the potential influence of transit accessibility on urban development and planning.</td>
-						</tr>
-						<tr>
-							<td><code>mbta_stops_with_buffer_collapsed.geojson</code></td>
-							<td>Derived from <code>mbta_stops_with_buffer.geojson</code>, this dataset removes duplicate entries for stops sharing the same <code>stop_name</code>, <code>zone_id</code>, and <code>stop_url</code>, simplifying the data set while maintaining a spatial buffer around each unique stop as a GeoJSON polygon.</td>
-							<td>Useful in minimizing data redundancy in urban mobility research, optimizing transit-oriented development studies, and supporting policy-making for enhanced transit stop accessibility and connectivity.</td>
-						</tr>
-        			</tr>
+						<td><code>mbta_stops.geojson</code></td>
+						<td>This dataset contains all transit stops in the MBTA network, extracted from the GTFS <code>stops.txt</code> file and enriched with route associations. Each stop is represented as a GeoJSON <code>Point</code> with attributes such as <code>stop_name</code>, <code>stop_id</code>, <code>zone_id</code>, <code>wheelchair_boarding</code>, and <code>routes</code>. The dataset provides detailed information about MBTA stops, including their locations and accessibility status.</td>
+						<td>Useful for transit stop mapping, accessibility analysis, and multimodal transportation planning. It supports applications in public transit optimization, urban mobility studies, and stop clustering analysis.</td>
+					</tr>
     			</table>
 
 			<figure>
