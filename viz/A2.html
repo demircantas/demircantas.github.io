@@ -115,38 +115,89 @@
 
 			<figure>
 				<img src="https://i.imgur.com/KdQvFhU.png" alt="Duplicate Municipalities" />
-				<figcaption>Comparison of numeric columns for Brookline. 52 municipalities have duplicate entries, possibly due to data errors.</figcaption>
+				<figcaption>Upon comparing the number of municipalities with the number of unique municipalities, we find that there are 52 duplicate municipalities. This might be due to a double entry error, or multiple municipal entities in the same geographical location. For the remainder of the exercise, we assume that the duplication arises from an error.This figure displays the comparisons of numeric columns for Brookline. 52 municipalities have duplicate entries. Here we visualize Brookline with red and blue displaying values from different instances.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/45PHfdb.png" alt="Municipality Shape Files" />
-				<figcaption>Brookline has different shape files for each duplicate instance, introducing clutter.</figcaption>
+				<figcaption>We observe that Brookline, like other duplicate municipalities, has different shape files corresponding to different instances. Here, we also observe that the shapes are not just boundaries. They include other features that clutter our visualization.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/4bRRXpa.png" alt="Cleaned Boundaries" />
-				<figcaption>Simplified municipality shapes were used to reduce clutter in visualizations.</figcaption>
+				<figcaption>To avoid visual clutter, we used shapes from the provided <code>metro_boston_municipalities.geojson</code>. We joined this to our main <code>housing_sf_other_w_census.geojson</code> dataset using the `muni` field.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/nRrgGzz.png" alt="Population Distributions" />
-				<figcaption>Multiple municipalities have a population of 0; duplicate entries were later merged.</figcaption>
+				<figcaption>We observe minimum and maximum populations and find out that multiple municipalities have populations of 0. We will repeat this observation after combining duplicate municipalities. We see here that 16 municipalities have 0 population. We later find that a majority of these instances are from duplicate entries. We combine duplicate entries by summing their quantity values and averaging percentages.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/W33Poyr.png" alt="Family Households" />
-				<figcaption>Even after merging duplicates, 5 municipalities still had 0 family households.</figcaption>
+				<figcaption>Even after combining duplicate entries, we find that 5 municipalities have 0 family households.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/OuNKUcl.png" alt="Population vs Family Households" />
-				<figcaption>Municipalities like Burlington, Chelsea, and Everett had 0 family households even after merging duplicates.</figcaption>
+				<figcaption>Plotting family households against population, we find that Burlington, Chelsea, Everett and Somerville have 0 family households. We later find that these municipalities have 0 population, even after the merge. We filter these entries for further work.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/DP1dtNe.png" alt="Population Histogram" />
-				<figcaption>Histogram of population with min, median, and max values underlined.</figcaption>
+				<figcaption>Here we visualize a histogram of population underlining municipalities with minimum, median and maximum values. We confirm the filter operation via a histogram of number of municipalities against population.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/U5Oj689.png" alt="Income vs Race" />
-				<figcaption>Households earning under $10,000 visualized for preliminary racial distribution checks.</figcaption>
+				<figcaption>For a preliminary check to evaluate income against racial distribution, we look at households with income under \$10,000.</figcaption>
 			</figure>
 			<figure>
 				<img src="https://i.imgur.com/24WG8vT.png" alt="Violin Plot of Income Distribution" />
+				<figcaption>This is a more experimental violin plot of the same distribution with mean and median values visualized.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/Cwz1hzP.png" alt="Experimental plot" />
+				<figcaption>Here is another experimentation with the same plot.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/eIybmLw.png" alt="Households over income $200k" />
+				<figcaption>We visualize the number of households earning over \$200,000.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/yWGI19x.png" alt="Overall income distribution" />
+				<figcaption>The <code>Distribution of Households Across Income Brackets</code> chart presents the average number of households across different income brackets.</figcaption>
+			</figure>
+
+				 One <strong>unexpected</strong> observation stands out:</p>
+
+				<ul>
+    				<li><strong>The Highest Income Bracket Has the Greatest Number of Households</strong><br>
+        				Unlike typical income distributions, where middle-income brackets often dominate, this dataset suggests that <strong>households earning over $200,000 per year</strong> are the most common.
+    				</li>
+    				<li><strong>The Median Income Bracket Has the Fewest Households</strong><br>
+        				Few households report incomes in the lowest bracket, which could reflect economic conditions in the studied region.
+    				</li>
+				</ul>
+
+				<h3>Possible Explanations for the Wealth-Dominant Trend</h3>
+
+				<ol>
+    				<li><strong>Boston Metropolitan Area is Wealthier than Expected</strong><br>
+        				The dataset might reflect the high-income nature of the region, especially with affluent suburbs included.
+    				</li>
+    				<li><strong>The Income Brackets are Capped</strong><br>
+        				The highest income bracket is <strong>$200,000 and above</strong>, meaning it could be absorbing households making much more (e.g., $500K, $1M+). A lack of finer granularity at the high end limits visibility into true income distribution.
+    				</li>
+    				<li><strong>The Dataset May Need Inflation Adjustment</strong><br>
+        				If the dataset was created several years ago, the income brackets might not accurately reflect today's purchasing power. Adjusting for <strong>inflation</strong> might shift the balance of household distribution across brackets.
+    				</li>
+				</ol>
+
+
+			<figure>
+				<img src="https://i.imgur.com/IowyQeD.png" alt="Violin Plot of Income Distribution" />
+				<figcaption>Violin plot showing income distribution with mean and median indicators.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/GqBzYwX.png" alt="Violin Plot of Income Distribution" />
+				<figcaption>Violin plot showing income distribution with mean and median indicators.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/eOxH9re.png" alt="Violin Plot of Income Distribution" />
 				<figcaption>Violin plot showing income distribution with mean and median indicators.</figcaption>
 			</figure>
 			<!-- <figure>
