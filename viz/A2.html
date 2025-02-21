@@ -63,6 +63,102 @@
 			</ol>
 		</section>
 
+		    <title>Dataset Overview</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        p {
+            max-width: 60%;
+        }
+    </style>
+</head>
+<body>
+		<h2>Overview of Metro Boston Datasets</h2>
+
+		<p>
+			These datasets provide spatial and demographic insights into housing and municipal boundaries in Metro Boston.
+			The first dataset, <strong>Single Family Zoning vs Other Housing Zoning with Census Info</strong>, aggregates zoning
+			classifications for single-family and other housing types across 101 municipalities, integrating census-based
+			demographic and income data. The second dataset, <strong>Boston Metro Area Municipal Boundaries</strong>, maps
+			municipal boundaries for the same region, offering a reference framework for spatial analysis.
+		</p>
+
+		<table>
+			<tr>
+				<th>Dataset Title</th>
+				<th>Data Type</th>
+			</tr>
+			<tr>
+				<td>Single Family Zoning vs Other Housing Zoning with Census Info</td>
+				<td>geojson/csv</td>
+			</tr>
+			<tr>
+				<td>Boston Metro Area Municipal Boundaries</td>
+				<td>geojson</td>
+			</tr>
+		</table>
+		<!-- <h2>Overview of Metro Boston Datasets</h2>
+    		<table>
+        		<tr>
+            		<th>Dataset Title</th>
+            		<th>Table Name</th>
+            		<th>Data Type</th>
+            		<th>Data Source</th>
+            		<th>Key Attributes</th>
+            		<th>Link</th>
+        		</tr>
+        		<tr>
+            		<td>Single Family Zoning vs Other Housing Zoning with Census Info</td>
+            		<td>housing_sf_other_w_census</td>
+            		<td>geojson/csv</td>
+            		<td>MAPC, MassGIS, US Census, ACS</td>
+            		<td>
+                		<ul>
+                    		<li><strong>muni_id</strong>: Municipal ID</li>
+                    		<li><strong>muni</strong>: Municipality name</li>
+                    		<li><strong>only_single_family</strong>: Single-family zoning indicator</li>
+                    		<li><strong>is_MBTA_community</strong>: MBTA community status</li>
+                    		<li><strong>pop</strong>: Total population</li>
+                    		<li><strong>hh</strong>: Total households</li>
+                    		<li><strong>incu10</strong>: Households with income under $10,000</li>
+                		</ul>
+            		</td>
+            		<td>
+                		<a href="https://datacommon.mapc.org/browser/datasets/421" target="_blank">Zoning Atlas</a> |
+                		<a href="https://datacommon.mapc.org/browser/datasets/390" target="_blank">Massachusetts Municipal Boundaries</a> |
+                		<a href="https://www.mass.gov/files/csv/2023-12/MBTA%20Communities%20Community%20Categories%20and%20Capacity%20Calculations%20for%20web_0.csv" target="_blank">MBTA Communities</a>
+            		</td>
+        		</tr>
+        		<tr>
+            		<td>Boston Metro Area Municipal Boundaries</td>
+            		<td>metro_boston_municipalities</td>
+            		<td>geojson</td>
+            		<td>MassGIS</td>
+            		<td>
+                		<ul>
+                    		<li><strong>objectid</strong>: Internal feature number</li>
+                    		<li><strong>muni_id</strong>: Municipal ID</li>
+                    		<li><strong>municipal</strong>: Municipality name</li>
+                    		<li><strong>shape</strong>: Feature geometry</li>
+                		</ul>
+            		</td>
+            		<td>
+                		<a href="https://datacommon.mapc.org/browser/datasets/390" target="_blank">Massachusetts Municipal Boundaries</a>
+            		</td>
+        		</tr>
+    		</table> -->
+
 		<section>
 			<h2>Discoveries &amp; Insights</h2>
 			
