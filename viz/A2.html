@@ -38,24 +38,41 @@
 	</header>
 	<main>
 		<section>
-			<h2>Subtheme: [Transit Oriented Development]</h2>
+			<h2>Subtheme: [Subtheme: Zoning and Housing Supply]</h2>
 
 			<h3>Overall Analysis Questions</h3>
 			<ol>
-				<li>How does the frequency and connectivity of MBTA services at different stations correlate with the surrounding population density?</li>
-				<li>What is the relationship between the proximity MBTA stations and the availability of amenities such as parks, schools, and retail establishments?</li>
-				<li>How do property values vary in relation to their distance from MBTA stations?</li>
+				<li>How does single-family zoning contribute to the housing shortage in Massachusetts municipalities?</li>
+				<li>How do racial demographics relate to zoning policies and economic disparities?</li>
+				<li>How does zoning impact income distribution across municipalities?</li>
 				<!-- <li>...</li> -->
-				<p>
+				<!-- <p>
 					My motivation for these questions stems from a desire to understand how transit infrastructure can shape urban dynamics and improve quality of life. By focusing on the MBTA network, I aim to explore how transit connectivity (node value) relates to population density, how proximity to transit enhances urban amenities (place value), and how these factors influence property values (market value). This inquiry is inspired by the comprehensive 3V approach, which emphasizes the interconnected benefits of effective transit-oriented development as described in the World Bank article <a href="https://www.worldbank.org/en/topic/transport/publication/transforming-the-urban-space-through-transit-oriented-development-the-3v-approach" target="_blank">Transforming the Urban Space Through Transit-Oriented Development: The 3V Approach</a>. Analyzing these aspects will not only shed light on the current state of urban development in transit-accessible areas but also provide insights into potential strategies for sustainable growth.
-				</p>
+				</p> -->
 
 			</ol>
 		</section>
 
 		<section>
 			<h2>Discoveries &amp; Insights</h2>
-			<p> For this assignment I will be focusing on the MBTA network datasets provided for the assignment including MBTA lines, stops, and their buffered versions. </p>
+			
+			<p>
+				Zoning regulations play a crucial role in determining housing availability, affordability, and economic distribution. Our analysis explores how single-family zoning contributes to housing shortages, the relationship between zoning policies and racial demographics, and the impact of zoning on wealth concentration.
+			</p>
+
+			<h3>Research Questions</h3>
+			<p>
+				This analysis focuses on understanding zoning patterns and their implications for urban planning.
+				We aim to answer the following questions:
+			</p>
+			<ol>
+				<li><strong>How do zoning classifications correlate with demographic and economic indicators?</strong></li>
+				<li><strong>Are there spatial trends in zoning policies that indicate socioeconomic disparities?</strong></li>
+				<li><strong>What insights can be drawn about land use and development patterns from zoning data?</strong></li>
+			</ol>
+
+
+			<!-- <p> For this assignment I will be focusing on the MBTA network datasets provided for the assignment including MBTA lines, stops, and their buffered versions. </p>
 			<p> Upon finding out that the lines are limited to shape features with shapes and identifiers, I decided to explore single family zoning datasets to better address my questions. </p>
 
 				<table>
@@ -84,9 +101,45 @@
 						<td>This dataset contains all transit stops in the MBTA network, extracted from the GTFS <code>stops.txt</code> file and enriched with route associations. Each stop is represented as a GeoJSON <code>Point</code> with attributes such as <code>stop_name</code>, <code>stop_id</code>, <code>zone_id</code>, <code>wheelchair_boarding</code>, and <code>routes</code>. The dataset provides detailed information about MBTA stops, including their locations and accessibility status.</td>
 						<td>Useful for transit stop mapping, accessibility analysis, and multimodal transportation planning. It supports applications in public transit optimization, urban mobility studies, and stop clustering analysis.</td>
 					</tr>
-    			</table>
+    			</table> -->
 
 			<figure>
+				<img src="https://i.imgur.com/KdQvFhU.png" alt="Duplicate Municipalities" />
+				<figcaption>Comparison of numeric columns for Brookline. 52 municipalities have duplicate entries, possibly due to data errors.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/45PHfdb.png" alt="Municipality Shape Files" />
+				<figcaption>Brookline has different shape files for each duplicate instance, introducing clutter.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/4bRRXpa.png" alt="Cleaned Boundaries" />
+				<figcaption>Simplified municipality shapes were used to reduce clutter in visualizations.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/nRrgGzz.png" alt="Population Distributions" />
+				<figcaption>Multiple municipalities have a population of 0; duplicate entries were later merged.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/W33Poyr.png" alt="Family Households" />
+				<figcaption>Even after merging duplicates, 5 municipalities still had 0 family households.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/OuNKUcl.png" alt="Population vs Family Households" />
+				<figcaption>Municipalities like Burlington, Chelsea, and Everett had 0 family households even after merging duplicates.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/DP1dtNe.png" alt="Population Histogram" />
+				<figcaption>Histogram of population with min, median, and max values underlined.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/U5Oj689.png" alt="Income vs Race" />
+				<figcaption>Households earning under $10,000 visualized for preliminary racial distribution checks.</figcaption>
+			</figure>
+			<figure>
+				<img src="https://i.imgur.com/24WG8vT.png" alt="Violin Plot of Income Distribution" />
+				<figcaption>Violin plot showing income distribution with mean and median indicators.</figcaption>
+			</figure>
+			<!-- <figure>
 				<img src="A2_files/sourceimages/cape_cod.png" alt="Descriptive text" style="width: 100%; height: auto;">
 				<figcaption>
 					Upon checking <code>agency_name</code>, we realized that a line that belongs to the <a href="https://capecodrta.org/">Cape Cod Regional Transit Authority</a> is included in the dataset. We filtered this line for simplifying the dataset.
@@ -154,13 +207,16 @@
 				<figcaption>
 				ENTER IMAGE CAPTION HERE.
 				</figcaption>
-			</figure>
+			</figure> -->
 		</section>
 
 		<section>
 			<h2>Summary</h2>
 
-			<p>WRITE FINAL SUMMARY HERE.</p>
+			<p>
+				This exploratory analysis highlights the significant role of zoning in shaping urban demographics and economic structures. Findings indicate that single-family zoning contributes to housing shortages, economic segregation, and wealth concentration in high-income municipalities. Additionally, correlations between race and economic status suggest that zoning policies have historically reinforced disparities. Future research could refine these findings by incorporating inflation-adjusted income data and examining municipal zoning laws in greater detail.
+			</p>
+			<!-- <p>WRITE FINAL SUMMARY HERE.</p> -->
 		</section>
 	</main>
 
