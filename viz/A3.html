@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Vis &amp; Society Assignment 3</title>
+    <!-- Script to test markdown import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+
+	<link rel="stylesheet" href="A3_files/report.css">
+</head>
+
+<body>
+    <!-- Describe the script to call from the markdown file -->
+    <script>
+        async function loadMarkdown() {
+            const response = await fetch('A3_files/A3_report.md');
+            const text = await response.text();
+            const converter = new showdown.Converter();
+            document.getElementById('content').innerHTML = converter.makeHtml(text);
+        }
+        loadMarkdown();
+    </script>
+
+	<header>
+		<h1>
+			<small>Assignment 3</small>
+			Visualization Critique &amp; Redesign
+		</h1>
+
+		<p>
+			<strong>Demircan Tas</strong> — <em>tasd@mit.edu</em>
+		</p>
+
+	</header>
+
+	<main>
+
+		<section>
+			<!-- <h2>Reading &amp; Critique</h2> -->
+
+			<!-- <figure>
+				<img src="https://vis-society.github.io/assets/imgs/covid-spiral.png" alt="spiral visualization">
+			</figure> -->
+
+
+			<!-- <p>
+				Insights about the data/visualization:
+			</p> -->
+
+
+            <!-- Call the script to render markdown -->
+            <div id="content">Loading...</div>
+		</section>
+
+		<section>
+			<h2>Visualization Sketches</h2>
+
+      <figure>
+				<img src="A3_files/IMAGE_FILENAME.htm" alt="">
+				<figcaption>
+          BRIEF CAPTION HERE.
+				</figcaption>
+			</figure>
+
+			<p>
+				Design Rationale for Sketch 1:
+			</p>
+
+			<ul>
+				<li>RATIONALE 1</li>
+				<li>RATIONALE 2</li>
+				<li>RATIONALE 3</li>
+			</ul>
+
+			<figure>
+				<img src="A3_files/IMAGE_FILENAME.htm" alt="">
+				<figcaption>
+          BRIEF CAPTION HERE.
+				</figcaption>
+			</figure>
+
+			<p>
+				Design Rationale for Sketch 2:
+			</p>
+
+			<ul>
+				<li>RATIONALE 1</li>
+				<li>RATIONALE 2</li>
+				<li>RATIONALE 3</li>
+			</ul>
+
+			<figure>
+				<img src="A3_files/IMAGE_FILENAME.htm" alt="">
+				<figcaption>
+          BRIEF CAPTION HERE.
+				</figcaption>
+			</figure>
+
+			<p>
+				Design Rationale for Sketch 3:
+			</p>
+
+			<ul>
+				<li>RATIONALE 1</li>
+				<li>RATIONALE 2</li>
+				<li>RATIONALE 3</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Final Visualization Design</h2>
+      
+			<figure>
+				<img src="A3_files/IMAGE_FILENAME.htm" alt="">
+				<figcaption>
+          BRIEF CAPTION HERE.
+				</figcaption>
+			</figure>
+
+		</section>
+
+		<section>
+			<h2>Design Process &amp; Design Decisions</h2>
+
+			<p>
+        DESCRIBE YOUR DESIGN PROCESS AND DECISION DECISIONS HERE.
+      </p>
+
+      <h3>Reflection</h3>
+
+      <p>
+        WRITE YOUR FINAL REFLECTION HERE.
+      </p>
+		</section>
+	</main>
+
+
+</body></html>
