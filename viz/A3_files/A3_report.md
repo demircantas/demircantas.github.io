@@ -39,6 +39,6 @@ However, while the visualization succeeds in evoking an emotional response, it p
 5. The comparison of the Omicron variant being less sever but more contagious is an important piece of information from the article. Color could be used as a channel to communicate information like the severity of cases.
 6. The spiral being off-center reminds me of the Golden ratio. I wonder if this is an aesthetically informed decision. -->
 
-## Visualization Sketches
+<!-- ## Visualization Sketches
 ![Sketch1](https://i.imgur.com/8nJsdIA.png)
-![Sketch2](https://i.imgur.com/f9bzU5K.png)
+![Sketch2](https://i.imgur.com/f9bzU5K.png) -->
