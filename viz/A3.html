@@ -126,16 +126,31 @@
 		<section>
 			<h2>Design Process &amp; Design Decisions</h2>
 
+			<p> We build on the first sketch to clarify the scale of the data for easier comparison among years. We build a faint, ghosted plot of the previous / next year for easier comparison. We implement combs to provide an additional channel for color coding the rate of change. </p>
 			<p>
-				We build on the first sketch to clarify the scale of the data for easier comparison among years. We build a faint, ghosted plot of the previous / next year for easier comparison.
-				We implement combs to provide an additional channel for color coding the rate of change.
-      </p>
+				This visualization explores the relationship between <strong>weekly COVID-19 case counts and fatality severity</strong> over two distinct time periods: <em>July 2020–June 2021</em> and <em>July 2021–January 2022</em>. The primary objective was to investigate <strong>seasonal trends, peak infection waves, and variations in the fatality rate</strong>, while also incorporating a <strong>personal timeline</strong> to contextualize broader patterns. A pseudo-prediction extending beyond the recorded dataset was introduced to depict potential post-January 2022 trends, differentiating observed case trajectories from expected developments. The inclusion of a personal narrative aligns with specific moments in the dataset, illustrating how macro-level epidemiological trends intersect with individual experiences. The visualization employs a <strong>two-chart layout</strong> to facilitate <strong>comparisons between different pandemic waves</strong>, emphasizing how infection surges and severity rates evolved over time.
+			</p>
 
-      <h3>Reflection</h3>
+			<p>
+				The <strong>fatality severity index</strong> was computed as:
+			</p>
+			<p style="text-align: center;">
+				<em>Severity Index = (New Deaths per Week) / (New Cases per Week)</em>
+			</p>
+			<p>
+				Weekly aggregation was used to <strong>smooth short-term fluctuations</strong> and reduce statistical noise. The severity index values were then <strong>smoothed using a rolling average with a three-week window</strong> to further mitigate variability. This approach ensures that the index reflects <strong>broader trends rather than isolated anomalies</strong>. The visualization employs a <strong>color-encoded curvature comb</strong> to indicate week-to-week fluctuations in severity, while a <strong>red line plot</strong> tracks reported cases. The pseudo-prediction is visually distinguished through <strong>low-opacity styling</strong> to differentiate it from observed data. Annotations highlight <strong>key peaks and troughs</strong>, ensuring that critical moments in the pandemic's progression are clearly communicated.
+			</p>
 
-      <p>
-        WRITE YOUR FINAL REFLECTION HERE.
-      </p>
+		<h3>Reflection</h3>
+
+			<p>
+				The iterative design process informed refinements to <strong>spacing, annotation clarity, and color usage</strong>. Early sketches emphasized the importance of <strong>comparing different waves of the pandemic</strong>, leading to the adoption of a <strong>split dual-chart layout</strong>. While the final design effectively highlights large-scale case trends and fatality severity, some trade-offs were made. For instance, <strong>within-week variations are downplayed</strong> due to weekly aggregation, and individual data points are not directly labeled to maintain clarity. Additionally, the <strong>pseudo-prediction line</strong> required careful balance to avoid overpowering actual case data while still illustrating projected trends.
+			</p>
+
+			<p>
+				One of the most challenging aspects was <strong>balancing narrative-driven elements with data integrity</strong>. The inclusion of a personal timeline added context to the case data but also required careful placement to ensure it did not overshadow key epidemiological trends. Furthermore, while the severity index conveys general trends, its computation assumes <strong>consistent case reporting</strong>, which may not fully capture underreported fatalities or shifts in testing practices. The process of critique and redesign helped refine the <strong>annotation positioning, the legend placement, and the overall readability of the visualization</strong>. While not all trade-offs could be resolved, the final visualization presents an analytical and structured view of the data, highlighting both the pandemic’s impact and the challenges inherent in visualizing epidemiological trends.
+			</p>
+
 		</section>
 	</main>
 
