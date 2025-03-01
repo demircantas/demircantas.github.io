@@ -64,7 +64,7 @@
 
 			<p>
 				<!-- Add axis labels. -->
-				We split the spiral into two separate years and flatten it into a horizontal chart for easier reading of magnitude.
+				We split the spiral into two separate years and flatten it into a horizontal chart for easier reading of magnitude. This approach sacrifices the subliminal messaging of the spiral chart for ease of interpretation. We add annotations to mark important events during the pandemic.
 			</p>
 
 			<ul>
@@ -76,12 +76,12 @@
 			<figure>
 				<img src="https://i.imgur.com/f9bzU5K.png" alt="3D sketch">
 				<figcaption>
-					3D sketch for alternative spiral.
+					3D sketch for alternative, fixed radius spiral.
 				</figcaption>
 			</figure>
 
 			<p>
-				The spiral concept communicates how the pandemic has the potential to spiral out of control due to the Omicron variant.
+				The spiral concept communicates how the pandemic has the potential to spiral out of control due to the Omicron variant. This design has potential for greater impact that is not fully realized in a 2D medium. However, this approach loses most of its potential in a 2D medium. In a VR application, it would equip the user with the ability to assume different viewpoints that make comparisons easier. We would implement preset perspectives to emphasize significant events in comparison.
 			</p>
 
 			<ul>
@@ -95,7 +95,7 @@
 			<figure>
 				<img src="https://i.imgur.com/ti56h8A.png" alt="Sketch 3">
 				<figcaption>
-					Circular design with severity combs.
+					Circular design with severity combs colored to encode case severity. We replace the spiral with a circular representation for each year to keep the scale consistent.
 				</figcaption>
 			</figure>
 
@@ -108,6 +108,7 @@
 				<li>Separating the years fixes the scale problem with the spiral design.</li>
 				<li>We solve continuity via the use of extended dashed / ghosted lines at the beginning and end of each year, connected via highlighted arrows.</li>
 				<li>We create combs under the lines (see orange lines in the figure). The combs combine the line plot with bar chart elements. Furthermore, we can color the combs with additional data like the severity of the cases, or the rate of increase in case reports.</li>
+				<li>The severity combs were inspired by curvature combs used for evaluating curves and surfaces in automotive design software (see top right of figure).</li>
 			</ul>
 		</section>
 
@@ -117,7 +118,7 @@
 			<figure>
 				<img src="https://i.imgur.com/sc4P7Jz.png" alt="final visualization">
 				<figcaption>
-					Final visualization design.
+					Final visualization design where the X-axis represents the weeks of the year, and the Y-axis represents the number of cases. The red line represents the number of cases, and the color coded combs represent the severity of the cases.
 				</figcaption>
 			</figure>
 
@@ -126,9 +127,11 @@
 		<section>
 			<h2>Design Process &amp; Design Decisions</h2>
 
-			<p> We build on the first sketch to clarify the scale of the data for easier comparison among years. We build a faint, ghosted plot of the previous / next year for easier comparison. We implement combs to provide an additional channel for color coding the rate of change. </p>
+			<!-- <p> We build on the first sketch to clarify the scale of the data for easier comparison among years. We build a faint, ghosted plot of the previous / next year for easier comparison. We implement combs to provide an additional channel for color coding the rate of change. </p> -->
 			<p>
-				This visualization explores the relationship between <strong>weekly COVID-19 case counts and fatality severity</strong> over two distinct time periods: <em>July 2020–June 2021</em> and <em>July 2021–January 2022</em>. The primary objective was to investigate <strong>seasonal trends, peak infection waves, and variations in the fatality rate</strong>, while also incorporating a <strong>personal timeline</strong> to contextualize broader patterns. A pseudo-prediction extending beyond the recorded dataset was introduced to depict potential post-January 2022 trends, differentiating observed case trajectories from expected developments. The inclusion of a personal narrative aligns with specific moments in the dataset, illustrating how macro-level epidemiological trends intersect with individual experiences. The visualization employs a <strong>two-chart layout</strong> to facilitate <strong>comparisons between different pandemic waves</strong>, emphasizing how infection surges and severity rates evolved over time.
+				This visualization explores the relationship between <strong>weekly COVID-19 case counts and fatality severity</strong> over two distinct time periods: <em>July 2020–June 2021</em> and <em>July 2021–January 2022</em>. The primary objective was to investigate <strong>seasonal trends, peak infection waves, and variations in the fatality rate</strong>, while also incorporating a <strong>personal timeline</strong> to contextualize broader patterns. A pseudo-prediction (we use ground truth from dataset in place of a prediction when data was not yet available) extending beyond the recorded dataset was introduced to depict potential post-January 2022 trends, differentiating observed case trajectories from expected developments. 
+				<!-- The inclusion of a personal narrative aligns with specific moments in the dataset, illustrating how macro-level epidemiological trends intersect with individual experiences. -->
+				 The visualization employs a <strong>two-chart layout</strong> to facilitate <strong>comparisons between different pandemic waves</strong>, emphasizing how infection surges and severity rates evolved over time.
 			</p>
 
 			<p>
@@ -148,7 +151,9 @@
 			</p>
 
 			<p>
-				One of the most challenging aspects was <strong>balancing narrative-driven elements with data integrity</strong>. The inclusion of a personal timeline added context to the case data but also required careful placement to ensure it did not overshadow key epidemiological trends. Furthermore, while the severity index conveys general trends, its computation assumes <strong>consistent case reporting</strong>, which may not fully capture underreported fatalities or shifts in testing practices. The process of critique and redesign helped refine the <strong>annotation positioning, the legend placement, and the overall readability of the visualization</strong>. While not all trade-offs could be resolved, the final visualization presents an analytical and structured view of the data, highlighting both the pandemic’s impact and the challenges inherent in visualizing epidemiological trends.
+				One of the most challenging aspects was <strong>balancing narrative-driven elements with data integrity</strong>. 
+				While working on this visualization, I realized that the timing of the prediction matches the dates when I lost my father, possibly due to a COVID-19 related illness. The assignment turned into an investigation of the timeline of my father's death which I did not face as directly before, with most uncertainties pertaining our loss still to be answered, let alone included in a dataset.
+				While the severity index conveys general trends, its computation assumes <strong>consistent case reporting</strong>, which may not fully capture underreported fatalities or shifts in testing practices. The process of critique and redesign helped refine the <strong>annotation positioning, the legend placement, and the overall readability of the visualization</strong>. While not all trade-offs could be resolved, the final visualization presents an analytical and structured view of the data, highlighting both the pandemic’s impact and the challenges inherent in visualizing epidemiological trends.
 			</p>
 
 		</section>
