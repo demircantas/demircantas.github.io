@@ -131,3 +131,27 @@ img {
     display: block; /* Prevents extra spacing issues */
     margin: 0 auto; /* Centers the image */
 }
+
+/* Collapsible button style */
+details {
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #444;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+summary {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+summary:hover {
+  background-color: #ccc;
+}
