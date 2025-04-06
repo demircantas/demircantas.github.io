@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Community Diversity Visualizer</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background: #f0f0f0;
+    }
+    #overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <label for="diversity-slider">Corporate Ownership: <span id="ownership-value">0</span>%</label><br>
+    <input type="range" id="diversity-slider" min="0" max="100" value="0">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const raceColors = [
+  0x588157, // Forest green
+  0x3a7ca5, // Muted blue
+  0xef476f, // Punchy pink-red
+  0xffc857  // Golden yellow
+];
+    const cols = 10;
+    const rows = 10;
+    const spacing = 2;
+    const spheres = [];
+    const personAttributes = [];
+
+    const finalDistribution = [0.9, 0.05, 0.03, 0.02];
+    const totalPeople = cols * rows;
+    const finalCounts = finalDistribution.map(p => Math.floor(p * totalPeople));
+    while (finalCounts.reduce((a, b) => a + b, 0) < totalPeople) {
+      finalCounts[0]++;
+    }
+
+    const originalRaceIndices = [];
+    for (let i = 0; i < totalPeople; i++) {
+      const raceIndex = Math.floor(Math.random() * raceColors.length);
+      originalRaceIndices.push(raceIndex);
+    }
+
+    const targetRaceIndices = [];
+    finalCounts.forEach((count, raceIndex) => {
+      for (let i = 0; i < count; i++) targetRaceIndices.push(raceIndex);
+    });
+    for (let i = targetRaceIndices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [targetRaceIndices[i], targetRaceIndices[j]] = [targetRaceIndices[j], targetRaceIndices[i]];
+    }
+
+    for (let i = 0; i < totalPeople; i++) {
+      const geometry = new THREE.SphereGeometry(0.5, 16, 16);
+      const material = new THREE.MeshStandardMaterial({ color: raceColors[originalRaceIndices[i]] });
+      const sphere = new THREE.Mesh(geometry, material);
+      const x = (i % cols - cols / 2) * spacing;
+      const y = (Math.floor(i / cols) - rows / 2) * spacing;
+      sphere.position.set(x, y, 0);
+
+      spheres.push(sphere);
+      personAttributes.push({
+        originalRace: originalRaceIndices[i],
+        targetRace: targetRaceIndices[i]
+      });
+
+      scene.add(sphere);
+    }
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(10, 10, 10);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040));
+
+    camera.position.z = 30;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    const slider = document.getElementById("diversity-slider");
+    const valueLabel = document.getElementById("ownership-value");
+
+    slider.addEventListener("input", () => {
+      const ownership = +slider.value;
+      valueLabel.textContent = ownership;
+      updateDiversity(ownership / 100);
+    });
+
+    function updateDiversity(progress) {
+      for (let i = 0; i < spheres.length; i++) {
+        const attr = personAttributes[i];
+        const transitionThreshold = i / totalPeople;
+        if (progress >= transitionThreshold) {
+          spheres[i].material.color.setHex(raceColors[attr.targetRace]);
+        } else {
+          spheres[i].material.color.setHex(raceColors[attr.originalRace]);
+        }
+      }
+    }
+
+    updateDiversity(0);
+  </script>
+</body>
+</html>
