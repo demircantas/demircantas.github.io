@@ -36,29 +36,57 @@
     document.body.appendChild(renderer.domElement);
 
     const raceColors = [
-  0x588157, // Forest green
-  0x3a7ca5, // Muted blue
-  0xef476f, // Punchy pink-red
-  0xffc857  // Golden yellow
-];
+      0x588157, // Forest green
+      0x3a7ca5, // Muted blue
+      0xef476f, // Punchy pink-red
+      0xffc857  // Golden yellow
+    ];
+
+    const ageHeights = [0.2, 0.5, 1.0];
     const cols = 10;
     const rows = 10;
     const spacing = 2;
-    const spheres = [];
-    const personAttributes = [];
-
-    const finalDistribution = [0.9, 0.05, 0.03, 0.02];
     const totalPeople = cols * rows;
-    const finalCounts = finalDistribution.map(p => Math.floor(p * totalPeople));
-    while (finalCounts.reduce((a, b) => a + b, 0) < totalPeople) {
-      finalCounts[0]++;
+
+    const people = [];
+
+    class Person {
+      constructor(index, originalRace, targetRace, ageIndex, x, z) {
+        this.originalRace = originalRace;
+        this.targetRace = targetRace;
+        this.ageIndex = ageIndex;
+        this.x = x;
+        this.z = z;
+        this.index = index;
+        this.mesh = this.createMesh();
+        scene.add(this.mesh);
+      }
+
+      createMesh() {
+        const geometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
+        const material = new THREE.MeshStandardMaterial({ color: raceColors[this.originalRace] });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(this.x, 0, this.z);
+        return mesh;
+      }
+
+      update(progress) {
+        const threshold = this.index / totalPeople;
+        const raceIndex = progress >= threshold ? this.targetRace : this.originalRace;
+        const height = progress >= threshold ? ageHeights[0] : ageHeights[this.ageIndex];
+
+        this.mesh.material.color.setHex(raceColors[raceIndex]);
+        this.mesh.scale.y = height / 0.2;
+        this.mesh.position.y = height / 2;
+      }
     }
 
-    const originalRaceIndices = [];
-    for (let i = 0; i < totalPeople; i++) {
-      const raceIndex = Math.floor(Math.random() * raceColors.length);
-      originalRaceIndices.push(raceIndex);
-    }
+    // Initialize race distributions
+    const finalDistribution = [0.9, 0.05, 0.03, 0.02];
+    const finalCounts = finalDistribution.map(p => Math.floor(p * totalPeople));
+    while (finalCounts.reduce((a, b) => a + b, 0) < totalPeople) finalCounts[0]++;
+
+    const originalRaceIndices = Array.from({ length: totalPeople }, () => Math.floor(Math.random() * raceColors.length));
 
     const targetRaceIndices = [];
     finalCounts.forEach((count, raceIndex) => {
@@ -69,29 +97,25 @@
       [targetRaceIndices[i], targetRaceIndices[j]] = [targetRaceIndices[j], targetRaceIndices[i]];
     }
 
+    // Create people
     for (let i = 0; i < totalPeople; i++) {
-      const geometry = new THREE.SphereGeometry(0.5, 16, 16);
-      const material = new THREE.MeshStandardMaterial({ color: raceColors[originalRaceIndices[i]] });
-      const sphere = new THREE.Mesh(geometry, material);
+      const ageIndex = Math.floor(Math.random() * ageHeights.length);
       const x = (i % cols - cols / 2) * spacing;
-      const y = (Math.floor(i / cols) - rows / 2) * spacing;
-      sphere.position.set(x, y, 0);
-
-      spheres.push(sphere);
-      personAttributes.push({
-        originalRace: originalRaceIndices[i],
-        targetRace: targetRaceIndices[i]
-      });
-
-      scene.add(sphere);
+      const z = (Math.floor(i / cols) - rows / 2) * spacing;
+      people.push(new Person(i, originalRaceIndices[i], targetRaceIndices[i], ageIndex, x, z));
     }
 
+    // Lighting & camera
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(10, 10, 10);
     scene.add(light);
     scene.add(new THREE.AmbientLight(0x404040));
 
-    camera.position.z = 30;
+    const axesHelper = new THREE.AxesHelper(10);
+    scene.add(axesHelper);
+
+    camera.position.set(20, 20, 20);
+    camera.lookAt(0, 0, 0);
 
     function animate() {
       requestAnimationFrame(animate);
@@ -109,15 +133,7 @@
     });
 
     function updateDiversity(progress) {
-      for (let i = 0; i < spheres.length; i++) {
-        const attr = personAttributes[i];
-        const transitionThreshold = i / totalPeople;
-        if (progress >= transitionThreshold) {
-          spheres[i].material.color.setHex(raceColors[attr.targetRace]);
-        } else {
-          spheres[i].material.color.setHex(raceColors[attr.originalRace]);
-        }
-      }
+      people.forEach(person => person.update(progress));
     }
 
     updateDiversity(0);
