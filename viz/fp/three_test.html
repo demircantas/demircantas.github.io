@@ -29,28 +29,31 @@
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <script>
+    const clusteringConfig = {
+      centerAttraction: 0.001,
+      minSeparation: 2.0,
+      attractionStrength: 0.25,
+      repulsionStrength: 0.25,
+      globalStrength: 0.1,
+      damping: 0.9
+    };
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    const raceColors = [
-      0x588157, // Forest green
-      0x3a7ca5, // Muted blue
-      0xef476f, // Punchy pink-red
-      0xffc857  // Golden yellow
-    ];
-
+    const raceColors = [0x588157, 0x3a7ca5, 0xef476f, 0xffc857];
     const ageHeights = [0.2, 0.5, 1.0];
     const cols = 10;
     const rows = 10;
     const spacing = 2;
     const totalPeople = cols * rows;
-
     const people = [];
 
     class Person {
+      static all = [];
       constructor(index, originalRace, targetRace, ageIndex, targetAgeIndex, educationLevel, targetEducationLevel, x, z) {
         this.originalRace = originalRace;
         this.targetRace = targetRace;
@@ -58,29 +61,25 @@
         this.targetAgeIndex = targetAgeIndex;
         this.educationLevel = educationLevel;
         this.targetEducationLevel = targetEducationLevel;
-        this.educationLevel = Math.floor(Math.random() * 3); // 0, 1, 2
+        this.index = index;
         this.x = x;
         this.z = z;
-        this.index = index;
-        this.mesh = this.createMesh();
-        this.eduMesh = this.createEducationMesh();
-        scene.add(this.mesh);
-        scene.add(this.eduMesh);
-      }
+        this.velocity = new THREE.Vector2();
+        this.position2D = new THREE.Vector2(x, z);
+        this.originalPosition = this.position2D.clone();
 
-      createMesh() {
         const geometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
         const material = new THREE.MeshStandardMaterial({ color: raceColors[this.originalRace] });
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(this.x, 0, this.z);
-        return mesh;
+        this.mesh = new THREE.Mesh(geometry, material);
+        scene.add(this.mesh);
+
+        this.eduMesh = this.createEducationMesh(this.educationLevel);
+        scene.add(this.eduMesh);
+
+        Person.all.push(this);
       }
 
-      createEducationMesh() {
-        return this.createEducationMeshFromLevel(this.educationLevel);
-      }
-
-      createEducationMeshFromLevel(level) {
+      createEducationMesh(level) {
         let shape;
         switch (level) {
           case 0:
@@ -94,33 +93,70 @@
             break;
         }
         const material = new THREE.MeshStandardMaterial({ color: 0x222222 });
-        const eduMesh = new THREE.Mesh(shape, material);
-        return eduMesh;
+        return new THREE.Mesh(shape, material);
+      }
+
+      applyClusteringForce(progress) {
+        const pos = this.position2D;
+        const vel = this.velocity;
+        let force = new THREE.Vector2();
+        const strength = progress * clusteringConfig.globalStrength;
+
+        for (const other of Person.all) {
+          if (other === this) continue;
+          const delta = other.position2D.clone().sub(pos);
+          const dist = delta.length();
+          const distSq = dist * dist + 0.01;
+          const dir = delta.normalize();
+
+          if (dist < clusteringConfig.minSeparation) {
+            force.sub(dir.multiplyScalar(0.1 * (clusteringConfig.minSeparation - dist)));
+            continue;
+          }
+
+          if (other.originalRace === this.originalRace) {
+            force.add(dir.multiplyScalar(clusteringConfig.attractionStrength * strength / distSq));
+          } else {
+            force.sub(dir.multiplyScalar(clusteringConfig.repulsionStrength * strength / distSq));
+          }
+        }
+
+        // Add center attraction force
+        const toCenter = new THREE.Vector2(0, 0).sub(pos);
+        force.add(toCenter.multiplyScalar(clusteringConfig.centerAttraction));
+
+        vel.add(force);
+        vel.multiplyScalar(clusteringConfig.damping);
+        pos.add(vel);
+
+        this.x = pos.x;
+        this.z = pos.y;
+        this.mesh.position.x = this.x;
+        this.mesh.position.z = this.z;
+        this.eduMesh.position.x = this.x;
+        this.eduMesh.position.z = this.z;
       }
 
       update(progress) {
         const threshold = this.index / totalPeople;
-
         const raceIndex = progress >= threshold ? this.targetRace : this.originalRace;
         const ageIndex = progress >= threshold ? this.targetAgeIndex : this.ageIndex;
-        const height = ageHeights[ageIndex];
         const eduLevel = progress >= threshold ? this.targetEducationLevel : this.educationLevel;
+        const height = ageHeights[ageIndex];
 
         this.mesh.material.color.setHex(raceColors[raceIndex]);
         this.mesh.scale.y = height / 0.2;
         this.mesh.position.y = height / 2;
 
-        // Update education shape
-        const eduMesh = this.eduMesh;
-        scene.remove(eduMesh);
-        const newMesh = this.createEducationMeshFromLevel(eduLevel);
-        newMesh.position.set(this.x, height + 0.1, this.z);
-        this.eduMesh = newMesh;
+        scene.remove(this.eduMesh);
+        this.eduMesh = this.createEducationMesh(eduLevel);
+        this.eduMesh.position.set(this.x, height + 0.1, this.z);
         scene.add(this.eduMesh);
+
+        this.applyClusteringForce(progress);
       }
     }
 
-    // Initialize race distributions
     const finalDistribution = [0.9, 0.05, 0.03, 0.02];
     const finalCounts = finalDistribution.map(p => Math.floor(p * totalPeople));
     while (finalCounts.reduce((a, b) => a + b, 0) < totalPeople) finalCounts[0]++;
@@ -136,31 +172,28 @@
       [targetRaceIndices[i], targetRaceIndices[j]] = [targetRaceIndices[j], targetRaceIndices[i]];
     }
 
-    // Create people
     for (let i = 0; i < totalPeople; i++) {
       const ageIndex = Math.floor(Math.random() * ageHeights.length);
+      const educationLevel = Math.floor(Math.random() * 3);
       const x = (i % cols - cols / 2) * spacing;
       const z = (Math.floor(i / cols) - rows / 2) * spacing;
-      const targetAgeIndex = 0;
-      const educationLevel = Math.floor(Math.random() * 3);
-      const targetEducationLevel = 2;
-      people.push(new Person(i, originalRaceIndices[i], targetRaceIndices[i], ageIndex, targetAgeIndex, educationLevel, targetEducationLevel, x, z));
+      people.push(new Person(i, originalRaceIndices[i], targetRaceIndices[i], ageIndex, 0, educationLevel, 2, x, z));
     }
 
-    // Lighting & camera
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(10, 10, 10);
     scene.add(light);
     scene.add(new THREE.AmbientLight(0x404040));
-
     const axesHelper = new THREE.AxesHelper(10);
     scene.add(axesHelper);
 
     camera.position.set(20, 20, 20);
     camera.lookAt(0, 0, 0);
 
+    let lastProgress = 0;
     function animate() {
       requestAnimationFrame(animate);
+      people.forEach(p => p.applyClusteringForce(lastProgress));
       renderer.render(scene, camera);
     }
     animate();
@@ -171,11 +204,12 @@
     slider.addEventListener("input", () => {
       const ownership = +slider.value;
       valueLabel.textContent = ownership;
-      updateDiversity(ownership / 100);
+      lastProgress = ownership / 100;
+      updateDiversity(lastProgress);
     });
 
     function updateDiversity(progress) {
-      people.forEach(person => person.update(progress));
+      people.forEach(p => p.update(progress));
     }
 
     updateDiversity(0);
