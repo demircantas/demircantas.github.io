@@ -40,6 +40,10 @@
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let highlighted = null;
+
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
@@ -69,7 +73,7 @@
         this.originalPosition = this.position2D.clone();
 
         const geometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
-        const material = new THREE.MeshStandardMaterial({ color: raceColors[this.originalRace] });
+        const material = new THREE.MeshStandardMaterial({ color: raceColors[this.originalRace], emissive: 0x000000 });
         this.mesh = new THREE.Mesh(geometry, material);
         scene.add(this.mesh);
 
@@ -192,6 +196,16 @@
 
     let lastProgress = 0;
     function animate() {
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(people.map(p => p.mesh));
+
+      if (highlighted) highlighted.mesh.material.emissive.setHex(0x000000);
+      if (intersects.length > 0) {
+        highlighted = people.find(p => p.mesh === intersects[0].object);
+        if (highlighted) highlighted.mesh.material.emissive.setHex(0x444444);
+      } else {
+        highlighted = null;
+      }
       requestAnimationFrame(animate);
       people.forEach(p => p.applyClusteringForce(lastProgress));
       renderer.render(scene, camera);
@@ -213,6 +227,11 @@
     }
 
     updateDiversity(0);
+
+    window.addEventListener("mousemove", event => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
   </script>
 </body>
 </html>
