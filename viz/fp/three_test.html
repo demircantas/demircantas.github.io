@@ -51,15 +51,21 @@
     const people = [];
 
     class Person {
-      constructor(index, originalRace, targetRace, ageIndex, x, z) {
+      constructor(index, originalRace, targetRace, ageIndex, targetAgeIndex, educationLevel, targetEducationLevel, x, z) {
         this.originalRace = originalRace;
         this.targetRace = targetRace;
         this.ageIndex = ageIndex;
+        this.targetAgeIndex = targetAgeIndex;
+        this.educationLevel = educationLevel;
+        this.targetEducationLevel = targetEducationLevel;
+        this.educationLevel = Math.floor(Math.random() * 3); // 0, 1, 2
         this.x = x;
         this.z = z;
         this.index = index;
         this.mesh = this.createMesh();
+        this.eduMesh = this.createEducationMesh();
         scene.add(this.mesh);
+        scene.add(this.eduMesh);
       }
 
       createMesh() {
@@ -70,14 +76,47 @@
         return mesh;
       }
 
+      createEducationMesh() {
+        return this.createEducationMeshFromLevel(this.educationLevel);
+      }
+
+      createEducationMeshFromLevel(level) {
+        let shape;
+        switch (level) {
+          case 0:
+            shape = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+            break;
+          case 1:
+            shape = new THREE.ConeGeometry(0.15, 0.3, 8);
+            break;
+          case 2:
+            shape = new THREE.SphereGeometry(0.15, 16, 16);
+            break;
+        }
+        const material = new THREE.MeshStandardMaterial({ color: 0x222222 });
+        const eduMesh = new THREE.Mesh(shape, material);
+        return eduMesh;
+      }
+
       update(progress) {
         const threshold = this.index / totalPeople;
+
         const raceIndex = progress >= threshold ? this.targetRace : this.originalRace;
-        const height = progress >= threshold ? ageHeights[0] : ageHeights[this.ageIndex];
+        const ageIndex = progress >= threshold ? this.targetAgeIndex : this.ageIndex;
+        const height = ageHeights[ageIndex];
+        const eduLevel = progress >= threshold ? this.targetEducationLevel : this.educationLevel;
 
         this.mesh.material.color.setHex(raceColors[raceIndex]);
         this.mesh.scale.y = height / 0.2;
         this.mesh.position.y = height / 2;
+
+        // Update education shape
+        const eduMesh = this.eduMesh;
+        scene.remove(eduMesh);
+        const newMesh = this.createEducationMeshFromLevel(eduLevel);
+        newMesh.position.set(this.x, height + 0.1, this.z);
+        this.eduMesh = newMesh;
+        scene.add(this.eduMesh);
       }
     }
 
@@ -102,7 +141,10 @@
       const ageIndex = Math.floor(Math.random() * ageHeights.length);
       const x = (i % cols - cols / 2) * spacing;
       const z = (Math.floor(i / cols) - rows / 2) * spacing;
-      people.push(new Person(i, originalRaceIndices[i], targetRaceIndices[i], ageIndex, x, z));
+      const targetAgeIndex = 0;
+      const educationLevel = Math.floor(Math.random() * 3);
+      const targetEducationLevel = 2;
+      people.push(new Person(i, originalRaceIndices[i], targetRaceIndices[i], ageIndex, targetAgeIndex, educationLevel, targetEducationLevel, x, z));
     }
 
     // Lighting & camera
