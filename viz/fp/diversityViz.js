@@ -20,7 +20,10 @@ export class DiversityVisualizer {
         damping: 0.9
       },
       raceColors: [0x588157, 0x3a7ca5, 0xef476f, 0xffc857],
+      raceLabels: ['Green', 'Blue', 'Red', 'Yellow'],
       ageHeights: [0.2, 0.5, 1.0],
+      ageLabels: ['Young', 'Middle', 'Older'],
+      eduLabels: ['None', 'Medium', 'High'],
       cols: 10,
       rows: 10,
       spacing: 2
@@ -86,11 +89,19 @@ export class DiversityVisualizer {
     const intersects = this.raycaster.intersectObjects(this.people.map(p => p.mesh));
 
     if (this.highlighted) this.highlighted.mesh.material.emissive.setHex(0x000000);
-    if (intersects.length > 0) {
-      this.highlighted = this.people.find(p => p.mesh === intersects[0].object);
-      if (this.highlighted) this.highlighted.mesh.material.emissive.setHex(0x444444);
-    } else {
-      this.highlighted = null;
+
+    const newlyHighlighted = intersects.length > 0 ? this.people.find(p => p.mesh === intersects[0].object) : null;
+
+    if (newlyHighlighted !== this.highlighted) {
+      this.highlighted = newlyHighlighted;
+
+      if (this.highlighted) {
+        this.highlighted.mesh.material.emissive.setHex(0x444444);
+        const data = this.highlighted.getDisplayData();
+        window.parent.postMessage({ type: 'hover-info', data }, '*');
+      } else {
+        window.parent.postMessage({ type: 'hover-info', data: null }, '*');
+      }
     }
 
     this.people.forEach(p => p.applyClusteringForce(this.lastProgress));
@@ -206,4 +217,14 @@ class Person {
   getHeight() {
     return this.viz.config.ageHeights[this.ageIndex];
   }
-}
+
+  getDisplayData() {
+    const { raceLabels, ageLabels, eduLabels } = this.viz.config;
+    return {
+      index: this.index,
+      race: raceLabels[this.originalRace],
+      age: ageLabels[this.ageIndex],
+      education: eduLabels[this.educationLevel]
+    };
+  }
+} 

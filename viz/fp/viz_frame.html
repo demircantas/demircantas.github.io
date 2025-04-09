@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Diversity Visualization Frame</title>
+  <title>Diversity Frame</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
       height: 100%;
+      overflow: hidden;
     }
     #viz-container {
       width: 100%;
@@ -18,16 +18,13 @@
 </head>
 <body>
   <div id="viz-container"></div>
-
   <script type="module">
     import { DiversityVisualizer } from './diversityViz.js';
 
     const container = document.getElementById('viz-container');
     const visualizer = new DiversityVisualizer(container);
 
-    // Listen for messages from the parent window (e.g. slider changes)
     window.addEventListener('message', (event) => {
-      // Expected message format: { type: 'update-progress', value: 0.0 to 1.0 }
       if (event.data?.type === 'update-progress') {
         visualizer.update(event.data.value);
       }

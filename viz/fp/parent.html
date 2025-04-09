@@ -31,6 +31,15 @@
 
     input[type="range"] {
       width: 300px;
+
+    #info-panel {
+      width: 200px;
+      background: #f9f9f9;
+      border-left: 1px solid #ccc;
+      padding: 12px;
+      font-size: 14px;
+    }
+
     }
   </style>
 </head>
@@ -42,11 +51,17 @@
   </div>
 
   <iframe id="viz-frame" src="viz_frame.html"></iframe>
+  <div id="info-panel">
+    <h3>Individual Info</h3>
+    <div id="info-content">Hover over a person to see details.</div>
+  </div>
+
 
   <script>
     const slider = document.getElementById('ownership-slider');
     const valueLabel = document.getElementById('slider-value');
     const iframe = document.getElementById('viz-frame');
+    const infoContent = document.getElementById('info-content');
 
     slider.addEventListener('input', () => {
       const value = parseInt(slider.value, 10);
@@ -58,6 +73,56 @@
         value: value / 100
       }, '*');
     });
-  </script>
+
+  // This goes inside your existing <script>, after the slider code
+
+  window.addEventListener('message', (event) => {
+    const msg = event.data;
+    if (msg?.type === 'hover-info') {
+      if (msg.data) {
+        const { index, race, age, education } = msg.data;
+        infoContent.innerHTML = `
+          <strong>ID:</strong> ${index}<br>
+          <strong>Race:</strong> ${race}<br>
+          <strong>Age:</strong> ${age}<br>
+          <strong>Education:</strong> ${education}
+        `;
+      } else {
+        infoContent.textContent = 'Hover over a person to see details.';
+      }
+    }
+  });
+
+
+  // Send progress updates to iframe
+  slider.addEventListener('input', () => {
+    const value = parseInt(slider.value, 10);
+    valueLabel.textContent = value;
+
+    iframe.contentWindow.postMessage({
+      type: 'update-progress',
+      value: value / 100
+    }, '*');
+  });
+
+  // Listen for hover data from iframe
+  window.addEventListener('message', (event) => {
+    const msg = event.data;
+    if (msg?.type === 'hover-info') {
+      if (msg.data) {
+        const { index, race, age, education } = msg.data;
+        infoContent.innerHTML = `
+          <strong>ID:</strong> ${index}<br>
+          <strong>Race:</strong> ${race}<br>
+          <strong>Age:</strong> ${age}<br>
+          <strong>Education:</strong> ${education}
+        `;
+      } else {
+        infoContent.textContent = 'Hover over a person to see details.';
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
