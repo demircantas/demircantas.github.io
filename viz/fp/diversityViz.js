@@ -17,7 +17,7 @@ export class DiversityVisualizer {
         attractionStrength: 0.25,
         repulsionStrength: 0.25,
         globalStrength: 0.1,
-        damping: 0.9
+        damping: 0.55
       },
       raceColors: [0x588157, 0x3a7ca5, 0xef476f, 0xffc857],
       raceLabels: ['Green', 'Blue', 'Red', 'Yellow'],
@@ -148,16 +148,35 @@ class Person {
     viz.scene.add(this.eduMesh);
   }
 
-  createEducationMesh(level) {
-    let shape;
-    switch (level) {
-      case 0: shape = new THREE.BoxGeometry(0.2, 0.2, 0.2); break;
-      case 1: shape = new THREE.ConeGeometry(0.15, 0.3, 8); break;
-      case 2: shape = new THREE.SphereGeometry(0.15, 16, 16); break;
-    }
-    const material = new THREE.MeshStandardMaterial({ color: 0x222222 });
-    return new THREE.Mesh(shape, material);
-  }
+createEducationMesh(level) {
+  const emojiMap = ['‍🏭', '✏️', '🎓'];
+  const emoji = emojiMap[level] || '❓';
+
+  const size = 64;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+
+  // 🔥 No background fill — fully transparent canvas
+  ctx.clearRect(0, 0, size, size);
+
+  ctx.font = '96px serif';
+  // ctx.font = '48px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = 'black'; // or 'white' if the emoji is too dark
+  ctx.fillText(emoji, size / 2, size / 2);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+
+  const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+  const sprite = new THREE.Sprite(material);
+  sprite.scale.set(0.5, 0.5, 0.5);
+
+  return sprite;
+}
 
   applyClusteringForce(progress) {
     const cfg = this.viz.config.clustering;
