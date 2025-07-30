@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speech Test</title>
+</head>
+<body>
+  <h1>Speech Recognition Test</h1>
+  <button onclick="startSpeech()">Start Listening</button>
+  <button onclick="stopSpeech()">Stop Listening</button>
+  <p id="output">(Waiting for speech...)</p>
+
+  <script>
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const output = document.getElementById('output')
+
+    if (!SpeechRecognition) {
+      output.innerText = 'SpeechRecognition is not supported in this browser.'
+    } else {
+      const r = new SpeechRecognition()
+      r.continuous = true
+      r.interimResults = true
+      r.lang = 'en-US'
+
+      r.onresult = e => {
+        const t = Array.from(e.results)
+          .map(r => r[0].transcript)
+          .join('')
+        output.innerText = t
+        console.log('[Speech]', t)
+      }
+
+      r.onerror = e => {
+        output.innerText = 'Error: ' + e.error
+        console.warn('[Speech] Error:', e.error)
+      }
+
+      window.startSpeech = () => r.start()
+      window.stopSpeech = () => r.stop()
+    }
+  </script>
+</body>
+</html>
