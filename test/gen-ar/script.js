@@ -156,7 +156,7 @@ function loadModelByKey(key) {
 // === Whisper Transcription WebSocket ===
 const logDiv = document.getElementById('log');
 // const ws = new WebSocket('ws://localhost:8765'); // change if your server differs
-const ws = new WebSocket('ws://128.31.37.145:8765'); // change if your server differs
+const ws = new WebSocket('https://relative-blvd-targeted-wealth.trycloudflare.com/'); // change if your server differs
 
 // Simple debounce to avoid spawning on every partial if your server streams a lot
 let spawnTimer = null;
