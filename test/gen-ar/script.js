@@ -193,4 +193,23 @@ ws.onmessage = (event) => {
   } else {
     logDiv.innerText += `\n> ${msg}\n`;
     clearTimeout(spawnTimer);
-    sp
+    spawnTimer = setTimeout(() => {
+      const matchKey = findModelKey(msg);
+      if (!matchKey) {
+        console.log('No model match found for:', msg);
+      } else {
+        loadModelByKey(matchKey);
+      }
+    }, SPAWN_DELAY_MS);
+  }
+  logDiv.scrollTop = logDiv.scrollHeight;
+};
+
+ws.onclose = () => {
+  logDiv.innerText += '\n🔴 WebSocket closed.';
+};
+
+ws.onerror = (err) => {
+  logDiv.innerText += '\n⚠️ WebSocket error.';
+  console.error(err);
+};
