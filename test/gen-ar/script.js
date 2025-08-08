@@ -87,14 +87,23 @@ let currentKey = null;
 const modelLibrary = {
   barrel: 'models/barrel.glb',
   teeth: 'models/teeth.glb',
+  chalice: 'models/chalice.glb',
+  pillow: 'models/pillow.glb',
+  throne: 'models/throne.glb',
+  vehicel: 'models/vehicle.glb',
 };
 
 const aliasMap = {
   barrel: 'barrel',
-  box: 'barrel',
-  ship: 'spaceship',
-  mouth: 'teeth',
-  building: 'teeth',
+  chalice: 'chalice',
+  cup: 'chalice',
+  pillow: 'pillow',
+  cushion: 'pillow',
+  throne: 'throne',
+  chair: 'throne',
+  seat: 'throne',
+  vehicle: 'vehicle',
+  car: 'vehicle',
 };
 
 const termToKey = (() => {
