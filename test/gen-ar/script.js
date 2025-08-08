@@ -1,6 +1,7 @@
 // Use esm.sh so there are no bare-specifier issues in the browser
 import * as THREE from 'https://esm.sh/three@0.164.1';
 import { GLTFLoader } from 'https://esm.sh/three@0.164.1/examples/jsm/loaders/GLTFLoader.js';
+import { XRHandModelFactory } from 'https://esm.sh/three@0.164.1/examples/jsm/webxr/XRHandModelFactory.js';
 
 // === Scene ===
 const scene = new THREE.Scene();
@@ -20,12 +21,14 @@ const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(1, 1, 2);
 scene.add(light);
 
-// Placeholder cube
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(),
-  new THREE.MeshStandardMaterial({ color: 0x00ffcc })
-);
-scene.add(cube);
+/* ===========================
+   DEBUG CUBE (commented out)
+=========================== */
+// const cube = new THREE.Mesh(
+//   new THREE.BoxGeometry(),
+//   new THREE.MeshStandardMaterial({ color: 0x00ffcc })
+// );
+// scene.add(cube);
 
 // Resize handling
 window.addEventListener('resize', () => {
@@ -34,10 +37,29 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+/* ===========================
+   HAND TRACKING SETUP
+=========================== */
+const handFactory = new XRHandModelFactory();
+
+// Create left & right hand objects; these become visible when hand-tracking is active.
+// We attach a simple "spheres" model so you can see the joints.
+const leftHand = renderer.xr.getHand(0);
+leftHand.userData.skipRaycast = true;
+leftHand.add(handFactory.createHandModel(leftHand, 'spheres'));
+scene.add(leftHand);
+
+const rightHand = renderer.xr.getHand(1);
+rightHand.userData.skipRaycast = true;
+rightHand.add(handFactory.createHandModel(rightHand, 'spheres'));
+scene.add(rightHand);
+
 // Animate
 renderer.setAnimationLoop(() => {
-  cube.rotation.x += 0.005;
-  cube.rotation.y += 0.01;
+  // if (cube) {
+  //   cube.rotation.x += 0.005;
+  //   cube.rotation.y += 0.01;
+  // }
   renderer.render(scene, camera);
 });
 
@@ -61,6 +83,7 @@ document.getElementById('enter-vr').addEventListener('click', async () => {
 
     const sessionInit = {
       requiredFeatures: ['local-floor'],
+      // hand-tracking is requested here; dom-overlay helps keep your log visible if supported
       optionalFeatures: ['anchors', 'hit-test', 'hand-tracking', 'dom-overlay'],
       domOverlay: { root: document.body }
     };
@@ -75,11 +98,14 @@ document.getElementById('enter-vr').addEventListener('click', async () => {
     });
   } catch (e) {
     console.error(e);
-    log && (log.innerText += `\n⚠️ Failed to start XR: ${e.message || e}`);
+    const msg = (e && e.message) ? e.message : e;
+    log && (log.innerText += `\n⚠️ Failed to start XR: ${msg}`);
   }
 });
 
-// === Model loading ===
+/* ===========================
+   MODEL LOADING (UNCHANGED)
+=========================== */
 const loader = new GLTFLoader();
 let currentModel = null;
 let currentKey = null;
@@ -90,7 +116,7 @@ const modelLibrary = {
   chalice: 'models/chalice.glb',
   pillow: 'models/pillow.glb',
   throne: 'models/throne.glb',
-  vehicel: 'models/vehicle.glb',
+  vehicle: 'models/vehicle.glb', // fixed typo: vehicel -> vehicle
 };
 
 const aliasMap = {
@@ -181,7 +207,9 @@ function loadModelByKey(key) {
   );
 }
 
-// === Whisper WebSocket ===
+/* ===========================
+   WHISPER WEBSOCKET (UNCHANGED)
+=========================== */
 const logDiv = document.getElementById('log');
 const ws = new WebSocket('https://relative-blvd-targeted-wealth.trycloudflare.com/');
 
