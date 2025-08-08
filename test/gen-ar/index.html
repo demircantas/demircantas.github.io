@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebXR + Live Transcription</title>
+  <title>WebXR AR Passthrough + Live Transcription</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button id="enter-vr">Enter VR</button>
-  <div id="log">Connecting to WebSocket...</div>
+  <!-- We'll keep your custom button but change the label -->
+  <button id="enter-xr">Enter AR</button>
+
+  <!-- Keep your log overlay; we'll expose it in XR via DOM Overlay -->
+  <div id="log">Ready for AR…</div>
 
   <script type="module" src="script.js"></script>
 </body>
