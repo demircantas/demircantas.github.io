@@ -1,3 +1,6 @@
 [submodule "viz/fp_sobering_reality"]
 	path = viz/fp_sobering_reality
 	url = git@github.com:demircantas/fp_sobering_reality.git
+[submodule "viz/sundai-elevator"]
+	path = viz/sundai-elevator
+	url = git@github.com:demircantas/sundai-elevator.git
